@@ -2,14 +2,35 @@
 "version": 1.0,
 "projetos": [
     {
-        "nome": "",
+        "nome": "Consulta CPF",
         "logo": "",
         "width": "",
 	"endpointMock": "",
 	"endpointProducao": ""
     },
     {
-        "nome": "",
+        "nome": "Consulta CNPJ",
+        "logo": "",
+        "width": "",
+	"endpointMock": "",
+	"endpointProducao": ""
+    },
+    {
+        "nome": "Consulta NFE",
+        "logo": "",
+        "width": "",
+	"endpointMock": "",
+	"endpointProducao": ""
+    },
+    {
+        "nome": "Datavalid Básico",
+        "logo": "",
+        "width": "",
+	"endpointMock": "",
+	"endpointProducao": ""
+    },
+    {
+        "nome": "Datavalid Biometria",
         "logo": "",
         "width": "",
 	"endpointMock": "",
