@@ -1,0 +1,19 @@
+{
+"version": 1.0,
+"projetos": [
+    {
+        "nome": "",
+        "logo": "",
+        "width": "",
+	"endpointMock": "",
+	"endpointProducao": ""
+    },
+    {
+        "nome": "",
+        "logo": "",
+        "width": "",
+	"endpointMock": "",
+	"endpointProducao": ""
+    }
+]
+}
