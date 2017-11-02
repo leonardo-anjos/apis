@@ -366,7 +366,7 @@
 					var conteudo = "";
 					for (var i = 0; i < meuJSON.projetos.length; i++) {
 					    	var projeto = meuJSON.projetos[i];
-						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/images/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 					}
 					$("#carrossel ul").append(conteudo);
 					$("#carrossel").jCarouselLite({
