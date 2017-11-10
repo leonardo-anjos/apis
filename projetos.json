@@ -30,7 +30,7 @@
     },
     {
         "nome": "Datavalid Básico",
-        "logo": "images/datavalid.png",
+        "logo": "images/datavalid_basico.png",
         "style": "width: 114px;",
 	"endpointMock": "https://apigateway.serpro.gov.br/datavalid-trial/basico/vbeta1",
 	"urlJsonSwaggerMock": "https://apigov.serpro.gov.br/store/api-docs/admin/datavalid-basico-trial/vbeta1",
@@ -39,7 +39,7 @@
     },
     {
         "nome": "Datavalid Biometria",
-        "logo": "images/datavalid.png",
+        "logo": "images/datavalid_biometria.png",
         "style": "width: 114px;",
 	"endpointMock": "https://apigateway.serpro.gov.br/datavalid-trial/biometria/vbeta1",
 	"urlJsonSwaggerMock": "https://apigov.serpro.gov.br/store/api-docs/admin/datavalid-biometria-trial/vbeta1",
