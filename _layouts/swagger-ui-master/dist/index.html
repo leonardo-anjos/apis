@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Swagger explorer</title>
+    <title>API Serpro - Documentaço</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -205,6 +205,24 @@
             $("[data-toggle='tooltip']").tooltip();
         });
     </script>
+   
+	<!-- CSS para personalizar documentação da API Serpro -->
+	<style>
+		header.site-header.site-header nav .navbar-brand a {
+		background: url("https://servicos.serpro.gov.br/api-serpro/img/marca-apiserpro.png") center left no-repeat;
+		/*background-size: 76%;*/
+		display: block;
+		margin-top: 5px;
+		background-size: 66%;
+	}	
+	
+		header.site-header.site-header {
+		z-index: 1000;
+		background-color: #5C666F;
+		font-size: 14px;
+		position: static;
+	}
+	</style>
 
 </head>
 
@@ -216,7 +234,7 @@
                 <button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span
                         class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                         class="icon-bar"></span><span class="icon-bar"></span></button>
-                <h1 class="navbar-brand"><a href="http://swagger.io"><span>swagger explorer</span></a></h1>
+                <h1 class="navbar-brand"><a href="https://devserpro.github.io/apis/"><span></span></a></h1>
             </div>
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
