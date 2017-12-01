@@ -621,7 +621,7 @@
       "properties": {
         "cpf": {
           "type": "string",
-          "example": "05137518743"
+          "example": "33840981026"
         }
       },"required":["cpf"]
     },
