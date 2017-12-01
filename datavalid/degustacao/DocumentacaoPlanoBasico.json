@@ -29,7 +29,7 @@
         "tags": [
           "1 Introdução"
         ],
-        "summary": "Datavalid",
+        "summary": "Datavalid - Plano Básico",
 		"description": "O Datavalid é uma solução de análise de informações que garante autenticidade e confiabilidade aos dados em tempo real.  O Datavalid é disponibilizado através de um serviço  `HTTP REST` oferecendo operações que permitem as aplicações realizar validações em dados de Pessoas Físicas e Pessoas Jurídicas. \n\n Nessa página, o Datavalid foi documentado utilizando a tecnologia Swagger. Através dessa documentação é possível entender o funcionamento do serviço testar todos os métodos disponíveis para uso. \n\n Utilize os links do menu ao lado para navegar pelas seções da documentação.",
          "responses": {
 
