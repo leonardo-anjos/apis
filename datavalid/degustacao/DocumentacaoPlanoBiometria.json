@@ -66,7 +66,7 @@
 				"description": "<b> OK - </b> Tudo funcionou como esperado e a validação dos dados foi realizada com sucesso."
 				},
 			"400":{
-				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço."
+				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição.Confira se as propriedades do corpo da requisição estão de acordo com a propriedades esperadas pelo método e se corpo da requisição está codificado em UTF-8."
 				},
 			"401":{
 				"description": "<b>Não autorizado - </b>Problemas durante a autenticação."
@@ -118,7 +118,7 @@
 					}
 				},
 			"400":{
-				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço."
+				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição.Confira se as propriedades do corpo da requisição estão de acordo com a propriedades esperadas pelo método e se corpo da requisição está codificado em UTF-8."
 				},
 			"401":{
 				"description": "<b>Não autorizado - </b>Problemas durante a autenticação."
@@ -171,7 +171,7 @@
 					}
 				},
 			"400":{
-				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição. Confira se as propriedade do JSON da requisição estão de acordo com a propriedade esperadas pelos serviço."
+				"description": "<b>Requisição inválida - </b> \n A requisição não foi aceita poís existe alguma iconsistência em algum campo da requisição.Confira se as propriedades do corpo da requisição estão de acordo com a propriedades esperadas pelo método e se corpo da requisição está codificado em UTF-8."
 				},
 			"401":{
 				"description": "<b>Não autorizado - </b>Problemas durante a autenticação."
