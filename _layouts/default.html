@@ -325,7 +325,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script>
 			$(function() {
-				var api = getParameterByName('api');
+				//var api = getParameterByName('api');
 				var endereco = 'https://raw.githubusercontent.com/devserpro/apis/master/projetos.json';
 				$.ajax({
 				    url: endereco,
@@ -341,13 +341,8 @@
 						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
 					
-										//Gera conteudo para Datavalid Produção
-					if(apiProd=="datavalid"){
-						for (var i = 3; i < 5; i++) {
-					    	var projeto = meuJSON.projetos[i];
-							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
-						}
-					}     
+										
+					 
 					    
 					
 					$("#carrossel ul").append(conteudo);
