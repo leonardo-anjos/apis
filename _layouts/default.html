@@ -343,7 +343,7 @@
 				    complete: function(res) {
 					var meuJSON = JSON.parse(res.responseText);
 					var conteudo = "";
-					    
+					var visibleItens = 3;   
 
 					//Gera conteudo para Mocks da API SERPRO    
 					for (var i = 0; i < meuJSON.projetos.length; i++) {
@@ -352,6 +352,7 @@
 					}
 					//Se for passado api datavalid então o conteudo será definido para Datavalid Produção
 					if(api=='datavalid'){
+						visibleItens = 2;
 						conteudo = "";
 						for (var i = 3; i < 5; i++) {
 					    	var projeto = meuJSON.projetos[i];
