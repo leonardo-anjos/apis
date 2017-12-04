@@ -337,7 +337,6 @@
 			
 			$(function() {
 				var api = getParameterByName('api');
-				alert(api)
 				var endereco = 'https://raw.githubusercontent.com/devserpro/apis/master/projetos.json';
 				$.ajax({
 				    url: endereco,
@@ -347,16 +346,18 @@
 					    
 
 					//Gera conteudo para Mocks da API SERPRO    
-					
-						for (var i = 0; i < meuJSON.projetos.length; i++) {
+					for (var i = 0; i < meuJSON.projetos.length; i++) {
 					    	var projeto = meuJSON.projetos[i];
 						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+					}
+					//Se for passado api datavalid então o conteudo será definido para Datavalid Produção
+					if(apiProd=="datavalid"){
+						for (var i = 3; i < 5; i++) {
+					    	var projeto = meuJSON.projetos[i];
+							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
-					
+					}    
 										
-					 
-					    
-					
 					$("#carrossel ul").append(conteudo);
 					$("#carrossel").jCarouselLite({
 						btnPrev: '.prev', 
