@@ -78,9 +78,12 @@
                     if (swaggerUi.options.url) {
                         $('#input_baseUrl').val(swaggerUi.options.url);
                     }
+			
                     
 			if(bearer!='' && bearer!=null)
 		   	  $('#input_apiKey').val(bearer);
+			else
+			  $('#input_apiKey').val(swaggerUi.options.apiKey);
                     
 
                     $("[data-toggle='tooltip']").tooltip();
