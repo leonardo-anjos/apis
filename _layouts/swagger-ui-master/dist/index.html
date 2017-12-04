@@ -79,7 +79,8 @@
                         $('#input_baseUrl').val(swaggerUi.options.url);
                     }
                     
-		    $('#input_apiKey').val(bearer);
+			if(bearer!='' && bearer!=null)
+		   	  $('#input_apiKey').val(bearer);
                     
 
                     $("[data-toggle='tooltip']").tooltip();
