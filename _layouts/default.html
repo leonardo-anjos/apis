@@ -325,16 +325,31 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script>
 			$(function() {
+				var api = getParameterByName('api');
 				var endereco = 'https://raw.githubusercontent.com/devserpro/apis/master/projetos.json';
 				$.ajax({
 				    url: endereco,
 				    complete: function(res) {
 					var meuJSON = JSON.parse(res.responseText);
 					var conteudo = "";
-					for (var i = 0; i < meuJSON.projetos.length; i++) {
+					    
+					//Gera conteudo para Datavalid Produção
+					if(apiProd=="datavalid"){
+						for (var i = 3; i < 5; i++) {
+					    	var projeto = meuJSON.projetos[i];
+							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+						}
+					} 
+					//Gera conteudo para Mocks da API SERPRO    
+					    else {
+						for (var i = 0; i < meuJSON.projetos.length; i++) {
 					    	var projeto = meuJSON.projetos[i];
 						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
-					}
+						}
+					}   
+					    
+					    
+					
 					$("#carrossel ul").append(conteudo);
 					$("#carrossel").jCarouselLite({
 						btnPrev: '.prev', 
@@ -358,6 +373,16 @@
 			function abrirModal(id) {
 				$(id).modal('show');
 			}
+			
+			 function getParameterByName(name, url) {
+       				 if (!url) url = window.location.href;
+        				name = name.replace(/[\[\]]/g, "\\$&");
+        			 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+           			 results = regex.exec(url);
+       				 if (!results) return null;
+        			 if (!results[2]) return '';
+        		    return decodeURIComponent(results[2].replace(/\+/g, " "));
+   			 }
 		
 		</script>
 	</body>
