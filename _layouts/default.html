@@ -324,8 +324,20 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script>
+			 function getParameterByName(name, url) {
+       				 if (!url) url = window.location.href;
+        				name = name.replace(/[\[\]]/g, "\\$&");
+        			 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+           			 results = regex.exec(url);
+       				 if (!results) return null;
+        			 if (!results[2]) return '';
+        		    return decodeURIComponent(results[2].replace(/\+/g, " "));
+   			 }
+		
+			
 			$(function() {
-				//var api = getParameterByName('api');
+				var api = getParameterByName('api');
+				alert(api)
 				var endereco = 'https://raw.githubusercontent.com/devserpro/apis/master/projetos.json';
 				$.ajax({
 				    url: endereco,
@@ -369,16 +381,7 @@
 				$(id).modal('show');
 			}
 			
-			 function getParameterByName(name, url) {
-       				 if (!url) url = window.location.href;
-        				name = name.replace(/[\[\]]/g, "\\$&");
-        			 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-           			 results = regex.exec(url);
-       				 if (!results) return null;
-        			 if (!results[2]) return '';
-        		    return decodeURIComponent(results[2].replace(/\+/g, " "));
-   			 }
-		
+			
 		</script>
 	</body>
 </html>
