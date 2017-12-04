@@ -333,21 +333,21 @@
 					var meuJSON = JSON.parse(res.responseText);
 					var conteudo = "";
 					    
-					//Gera conteudo para Datavalid Produção
+
+					//Gera conteudo para Mocks da API SERPRO    
+					
+						for (var i = 0; i < meuJSON.projetos.length; i++) {
+					    	var projeto = meuJSON.projetos[i];
+						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+						}
+					
+										//Gera conteudo para Datavalid Produção
 					if(apiProd=="datavalid"){
 						for (var i = 3; i < 5; i++) {
 					    	var projeto = meuJSON.projetos[i];
 							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
-					} 
-					//Gera conteudo para Mocks da API SERPRO    
-					    else {
-						for (var i = 0; i < meuJSON.projetos.length; i++) {
-					    	var projeto = meuJSON.projetos[i];
-						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
-						}
-					}   
-					    
+					}     
 					    
 					
 					$("#carrossel ul").append(conteudo);
