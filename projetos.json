@@ -2,6 +2,7 @@
 "version": 1.0,
 "projetos": [
     {
+        "api": "cpf",
         "nome": "Consulta CPF",
         "logo": "images/consulta-cpf.png",
         "style": "width: 142px;",
@@ -11,6 +12,7 @@
 	"urlJsonSwaggerProducao": "https://apigov.serpro.gov.br/store/api-docs/viabilidade/consulta-cpf/v1"
     },
     {
+        "api": "cnpj",
         "nome": "Consulta CNPJ",
         "logo": "images/consulta-cnpj.png",
         "style": "width: 161px;",
@@ -20,6 +22,7 @@
 	"urlJsonSwaggerProducao": "https://apigov.serpro.gov.br/store/api-docs/admin/consulta-cnpj/v1"
     },
     {
+        "api": "nfe",
         "nome": "Consulta NFE",
         "logo": "images/consulta-nfe.png",
         "style": "width: 153px;",
@@ -29,6 +32,7 @@
 	"urlJsonSwaggerProducao": "https://apigov.serpro.gov.br/store/api-docs/admin/NFE/1"
     },
     {
+        "api":"datavalid",
         "nome": "Datavalid Básico",
         "logo": "images/datavalid_basico.png",
         "style": "width: 114px;",
@@ -38,6 +42,7 @@
 	"urlJsonSwaggerProducao": "https://rawgit.com/devserpro/apis/master/datavalid/producao/DocumentacaoPlanoBasico.json"
     },
     {
+        "api": "datavalid",
         "nome": "Datavalid Biometria",
         "logo": "images/datavalid_biometria.png",
         "style": "width: 114px;",
@@ -45,6 +50,6 @@
 	"urlJsonSwaggerMock": "https://rawgit.com/devserpro/apis/master/datavalid/degustacao/DocumentacaoPlanoBiometria.json",
 	"endpointProducao": "https://apigateway.serpro.gov.br/datavalid/biometria/vbeta1",
 	"urlJsonSwaggerProducao": "https://rawgit.com/devserpro/apis/master/datavalid/producao/DocumentacaoPlanoBiometria.json"
-    }
+}
 ]
 }
