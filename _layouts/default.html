@@ -39,12 +39,38 @@
 				width: 100%;
 				text-align: center;
 			}
-			
+
 			div#carrossel {
    				 margin: auto;
 			}
 		</style>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+<script>
+
+	var mapaSwagger = new Map();
+	mapaSwagger.set("https://apigateway.serpro.gov.br","https://apigov.serpro.gov.br");
+	mapaSwagger.set("https://gateway.apiserpro.serpro.gov.br","https://store.apiserpro.serpro.gov.br");
+
+	var defaultBearer = '4e1a1858bdd584fdc077fb7d80f39283';
+	var defaultAmb = 'https://apigateway.serpro.gov.br';
+
+	var mock = !(getParameterByName('amb') != null && getParameterByName('bearer') != null);
+
+	var api = getParameterByName('api');
+	var bearer = (getParameterByName('bearer') == null)? defaultBearer : getParameterByName('bearer');
+	var amb = (getParameterByName('amb') == null)? defaultAmb : getParameterByName('amb');
+
+
+	 function getParameterByName(name, url) {
+					 if (!url) url = window.location.href;
+						name = name.replace(/[\[\]]/g, "\\$&");
+					 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+						 results = regex.exec(url);
+					 if (!results) return null;
+					 if (!results[2]) return '';
+						return decodeURIComponent(results[2].replace(/\+/g, " "));
+		 }
+</script>
 	</head>
 	<body>
 
@@ -57,7 +83,7 @@
 				<p>disponibilizadas pelo SERPRO que se conectam <br >
 				a bases federais. Caso tenha o interesse<br />
 				em adquirir uma das soluções, clique <a href="https://servicos.serpro.gov.br/api-gov/" target="_blank">aqui</a>.
-				 
+
 				<br />
 				Abaixo são apresentadas a documentação<br /> e a demonstração das APIs.
 				</p>
@@ -164,7 +190,7 @@
 		    <!-- Modal content-->
 		    <div class="modal-content modal-lg">
 		      <div class="modal-header">
-			
+
 			<h4 class="modal-title">Exemplos de Código - Autorização</h4>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
@@ -172,16 +198,16 @@
 
 			<strong>Como solicitar o Token de Acesso (Bearer)</strong><br /><br />
 
-			Para consultar as APIs disponibilizadas pelo SERPRO, é necessário obter um token de acesso 
-			temporário (Bearer). Esse token possui um tempo de validade e sempre 
+			Para consultar as APIs disponibilizadas pelo SERPRO, é necessário obter um token de acesso
+			temporário (Bearer). Esse token possui um tempo de validade e sempre
 			que expirado, este passo de requisição de um novo token de acesso deve ser repetido.<br /><br />
 
-			Para solicitar o token temporário é necessário realizar uma requisição 
-			HTTP POST para o endpoint Token https://apigateway.serpro.gov.br/token, 
-			informando as credenciais de acesso(consumerKey:consumerSecret) no HTTP Header 
-			Authorization, no formato base64, conforme exemplo abaixo. As credenciais de acesso 
+			Para solicitar o token temporário é necessário realizar uma requisição
+			HTTP POST para o endpoint Token <script type="text/javascript">document.write(amb);</script>/token,
+			informando as credenciais de acesso(consumerKey:consumerSecret) no HTTP Header
+			Authorization, no formato base64, conforme exemplo abaixo. As credenciais de acesso
 			devem ser obtidas a partir do portal do cliente Serpro - https://minhaconta.serpro.gov.br<br /><br />
-			
+
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
 				<span class="c">[POST]</span> grant_type=client_credentials<br />
 				<span class="c">[HEAD]</span> Authorization: Basic base64(Consumer Key:Consumer Secret)
@@ -190,17 +216,17 @@
 			Abaixo segue um exemplo de chamada via cUrl:<br /><br />
 
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
-				<span class="nt">curl</span> <span class="s">-k</span> <span class="s">-d</span> 
-				<span class="na">"grant_type=client_credentials"</span> 
+				<span class="nt">curl</span> <span class="s">-k</span> <span class="s">-d</span>
+				<span class="na">"grant_type=client_credentials"</span>
 				<span class="s">-H</span> <span class="na">"Authorization: Basic<br />
 				ZGphUjIxUEdvWXAxaXlLMm4yQUNPSDlSRWRVYjpPYlJzQUpXT0w0ZnYyVHAyN0QxdmQ4ZkIzT3RlCg" <br />
-				https://apigateway.serpro.gov.br/token</span>
+				<script type="text/javascript">document.write(amb);</script>/token</span>
 			</code></pre></figure>
 
 			A chave informada no exemplo acima “ZGphUjIxUEdvWXAxaXlLMm4yQUNPSD
-			lSRWRVYjpPYlJzQUpXT0w0ZnYyVHAyN0QxdmQ4ZkIzT3RlCg” é resultado do BASE64 
+			lSRWRVYjpPYlJzQUpXT0w0ZnYyVHAyN0QxdmQ4ZkIzT3RlCg” é resultado do BASE64
 			dos códigos Consumer Key e Consumer Secret separados pelo caracter “:”, conforme exemplo a seguir:<br /><br />
-			
+
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
 				<span class="nt">echo</span> <span class="s">-n</span>
 				<span class="na">"djaR21PGoYp1iyK2n2ACOH9REdUb:ObRsAJWOL4fv2Tp27D1vd8fB3Ote" | base64</span>
@@ -222,16 +248,16 @@
 		    <!-- Modal content-->
 		    <div class="modal-content modal-lg">
 		      <div class="modal-header">
-			
+
 			<h4 class="modal-title">Exemplos de Código - Recebendo Token</h4>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
 		      <div class="modal-body">
-			
+
 			<strong>Receba o Token</strong><br /><br />
 
-			Como resultado, o endpoint informará o token de acesso a API, no 
-			campo <strong>access_token</strong> da mensagem json de retorno. 
+			Como resultado, o endpoint informará o token de acesso a API, no
+			campo <strong>access_token</strong> da mensagem json de retorno.
 			Este token deve ser informado nos próximos passos.<br /><br />
 
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
@@ -239,11 +265,11 @@
 				"token_type":"Bearer", <br /> "expires_in":3295,
 				"access_token":"c66a7def1c96f7008a0c397dc588b6d7"</span>}
 			</code></pre></figure><br />
-			
+
 			<strong>Renovação do Token de Acesso</strong><br /><br />
 
-			Atentar que sempre que o token de acesso temporário expirar, 
-			o gateway vai retornar um <strong>HTTP CODE 401</strong> após realizar uma requisição 
+			Atentar que sempre que o token de acesso temporário expirar,
+			o gateway vai retornar um <strong>HTTP CODE 401</strong> após realizar uma requisição
 			para uma API. Neste caso, deve ser repetido o passo anteriormente descrito no Segundo Passo
 			(<strong>Como solicitar o Token de Acesso (Bearer)</strong>) para geração de um novo token de acesso temporário.
 
@@ -263,22 +289,22 @@
 		    <!-- Modal content-->
 		    <div class="modal-content modal-lg">
 		      <div class="modal-header">
-			
+
 			<h4 class="modal-title">Exemplos de Código - Fazendo uma Requisição</h4>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
 		      <div class="modal-body">
-			
+
 			<strong>Realizando consulta às APIs</strong><br /><br />
 
 			De posse do Token de Acesso, faça a requisição a um dos serviços, por exemplo da API CPF:<br /><br />
 
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
-				<span class="nt">curl</span> <span class="s">-X</span> <span class="na">GET</span> 
-				<span class="s">--header</span> 
+				<span class="nt">curl</span> <span class="s">-X</span> <span class="na">GET</span>
+				<span class="s">--header</span>
 				<span class="na">"Accept: application/json"</span><br /> <span class="s">--header</span>
 				<span class="na">"Authorization: Bearer 4e1a1858bdd584fdc077fb7d80f39283" <br />
-				"https://apigateway.serpro.gov.br/consulta-cpf/v1/99999999999"</span>
+				"<script type="text/javascript">document.write(amb);</script>/consulta-cpf/v1/99999999999"</span>
 			</code></pre></figure><br />
 
 			No exemplo acima foram utilizados os seguintes parâmetros:<br /><br />
@@ -287,17 +313,17 @@
 
 			<strong>[HEADER] Authorization:</strong> Bearer 4e1a1858bdd584fdc077fb7d80f39283 - Informamos o token de acesso recebido<br /><br />
 
-			<strong>[GET] https://apigateway.serpro.gov.br/consulta-cpfv1/cpf/v1/99999999999:</strong> chamamos a url da API informando o CPF. No caso a url é “consulta-cpf/v1/cpf/{numero do CPF}”<br /><br />
+			<strong>[GET] <script type="text/javascript">document.write(amb);</script>/consulta-cpf/v1/cpf/99999999999:</strong> chamamos a url da API informando o CPF. No caso a url é “consulta-cpf/v1/cpf/{numero do CPF}”<br /><br />
 
 			Nesse caso, espera-se que a estrutura da resposta seja a seguinte (exemplo):<br /><br />
-			
+
 			<figure class="highlight"><pre><code class="language-html" data-lang="html">
 			{ <br />
 			  <span class="nt">"ni"</span> : <span class="s">"91708635203"</span>, <br />
 			  <span class="nt">"nome"</span> : <span class="s">"Nome do CPF 917.086.352-03"</span>, <br />
 			  <span class="nt">"nascimento"</span> : <span class="s">"01011975"</span>, <br />
 			  <span class="nt" style="padding-left: 40px;">"situacao"</span> : { <br />
-			    <span class="nt" style="padding-left: 80px;">"codigo"</span> : <span class="s">"0"</span>, <br /> 
+			    <span class="nt" style="padding-left: 80px;">"codigo"</span> : <span class="s">"0"</span>, <br />
 			    <span class="nt" style="padding-left: 80px;">"descricao"</span> : <span class="s">"Regular"</span> <br />
 			  <span style="padding-left: 40px;">}</span> <br />
 			}
@@ -305,9 +331,9 @@
 
 			<h3 style="color: red;">IMPORTANTE</h3><br />
 
-			A chamada à consulta da API CPF acima é apenas um exemplo. As APIs disponíveis e suas respectivas 
+			A chamada à consulta da API CPF acima é apenas um exemplo. As APIs disponíveis e suas respectivas
 			URLs (endpoints) para consumo são disponibilizadas (através da documentação dos seus respectivos swaggers) na seção <strong>DEMONSTRAÇÃO DE APIS</strong>.
-			
+
 
 		      </div>
 		      <div class="modal-footer">
@@ -328,31 +354,33 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script>
-			 function getParameterByName(name, url) {
-       				 if (!url) url = window.location.href;
-        				name = name.replace(/[\[\]]/g, "\\$&");
-        			 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-           			 results = regex.exec(url);
-       				 if (!results) return null;
-        			 if (!results[2]) return '';
-        		    return decodeURIComponent(results[2].replace(/\+/g, " "));
-   			 }
-		
-			
+			//  function getParameterByName(name, url) {
+      //  				 if (!url) url = window.location.href;
+      //   				name = name.replace(/[\[\]]/g, "\\$&");
+      //   			 var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      //      			 results = regex.exec(url);
+      //  				 if (!results) return null;
+      //   			 if (!results[2]) return '';
+      //   		    return decodeURIComponent(results[2].replace(/\+/g, " "));
+   	// 		 }
+
+
 			$(function() {
-				var api = getParameterByName('api');
+
 				var endereco = 'https://raw.githubusercontent.com/devserpro/apis/master/projetos.json';
 				$.ajax({
 				    url: endereco,
 				    complete: function(res) {
 					var meuJSON = JSON.parse(res.responseText);
 					var conteudo = "";
-					var visibleItens = 3;   
+					var visibleItens = (api == null)? 3 : 1;
 
-					//Gera conteudo para Mocks da API SERPRO    
+					//Gera conteudo para Mocks da API SERPRO
 					for (var i = 0; i < meuJSON.projetos.length; i++) {
 					    	var projeto = meuJSON.projetos[i];
-						conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + projeto.urlJsonSwaggerMock + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+						if(api == null || api == meuJSON.projetos[i].api){
+							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + ((mock)? mapaSwagger.get(amb)+projeto.urlJsonSwaggerMock : mapaSwagger.get(amb)+projeto.urlJsonSwaggerProducao) + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+						}
 					}
 					//Se for passado api datavalid então o conteudo será definido para Datavalid Produção
 					if(api=='datavalid'){
@@ -362,24 +390,24 @@
 					    	var projeto = meuJSON.projetos[i];
 							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwaggerSemBearer(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
-					}    
-										
+					}
+
 					$("#carrossel ul").append(conteudo);
 					$("#carrossel").jCarouselLite({
-						btnPrev: '.prev', 
+						btnPrev: '.prev',
 						btnNext: '.next',
 						visible: visibleItens
 					});
 				    }
 				});
 			});
-			
+
 			function carregarSwagger(urlSwagger) {
 				//urlSwagger = "https://rawgit.com/devserpro/datavalid-basico/master/_layouts/swagger-datavalid-final.json";
 				//window.open("https://cdn.rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer=4e1a1858bdd584fdc077fb7d80f39283&url=" + urlSwagger, '_blank');
-				window.open("https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer=4e1a1858bdd584fdc077fb7d80f39283&url=" + urlSwagger, '_blank');
+				window.open("https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer="+bearer+"&url=" + urlSwagger, '_blank');
 			}
-			
+
 			function carregarSwaggerSemBearer(urlSwagger) {
 				window.open("https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?url=" + urlSwagger, '_blank');
 			}
@@ -391,8 +419,8 @@
 			function abrirModal(id) {
 				$(id).modal('show');
 			}
-			
-			
+
+
 		</script>
 	</body>
 </html>

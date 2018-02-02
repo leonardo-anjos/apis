@@ -43,8 +43,9 @@
     <script type="text/javascript">
         $(function () {
             var url = getParameterByName("url");
+            var amb = getParameterByName("amb");
 	    var bearer = getParameterByName("bearer");
-	    
+
 
 	    function getParameterByName(name, url) {
 		if (!url) url = window.location.href;
@@ -78,13 +79,13 @@
                     if (swaggerUi.options.url) {
                         $('#input_baseUrl').val(swaggerUi.options.url);
                     }
-			
-                    
+
+
 			if(bearer!='' && bearer!=null)
 		   	  $('#input_apiKey').val(bearer);
 			else
 			  $('#input_apiKey').val(swaggerUi.options.apiKey);
-                    
+
 
                     $("[data-toggle='tooltip']").tooltip();
 
@@ -209,7 +210,7 @@
             $("[data-toggle='tooltip']").tooltip();
         });
     </script>
-   
+
 	<!-- CSS para personalizar documentação da API Serpro -->
 	<style>
 		header.site-header.site-header nav .navbar-brand a {
@@ -218,8 +219,8 @@
 		display: block;
 		margin-top: 5px;
 		background-size: 66%;
-	}	
-	
+	}
+
 		header.site-header.site-header {
 		z-index: 1000;
 		background-color: #5C666F;
@@ -227,11 +228,11 @@
 		position: static;
 	}
 	</style>
-	
+
 	<!-- CSS para personalizar documentação do Datavalid -->
 	<style>
 
-		#resource_1_Introdução h4, 
+		#resource_1_Introdução h4,
 		#resource_1_Introdução input,
 		#resource_1_Introdução h3,
 		#resource_3_Dados_para_Testes h4,
@@ -243,15 +244,15 @@
 		{
 			display: none !important;
 		}
-		
+
 		.markdown.action-summary table tr th{
 			font-size:15px !important;
 		}
-		
+
 		.markdown.action-summary table *{
 			padding:10px;
 		}
-	</style>	
+	</style>
 
 </head>
 
@@ -287,4 +288,3 @@
 </section>
 </body>
 </html>
-
