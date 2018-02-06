@@ -54,6 +54,8 @@
 	var defaultBearer = '4e1a1858bdd584fdc077fb7d80f39283';
 	var defaultAmb = 'https://apigateway.serpro.gov.br';
 
+	var visible = 'show';
+
 	var mock = !(getParameterByName('amb') != null && getParameterByName('bearer') != null);
 
 	var api = getParameterByName('api');
@@ -152,7 +154,7 @@
 				<footer id="demonstracaoApi" class="major container 75%">
 					<h3>Demonstração de APIs</h3>
 					<p>Clique na API desejada abaixo para realizar a demonstração.<br />
-					Navegue nas setas para visualizar mais APIs (<i class="fa fa-chevron-left"></i> e <i class="fa fa-chevron-right"></i>)
+					<span class="navegue">Navegue nas setas para visualizar mais APIs (<i class="fa fa-chevron-left"></i> e <i class="fa fa-chevron-right"></i>)</span>
 					</p>
 					<div id="content">
 						<div id="carrossel">
@@ -395,7 +397,10 @@
 							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwaggerSemBearer(\'' + projeto.urlJsonSwaggerProducao + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
 					}
-
+					if (visibleItens < 3) {
+						$("#menu-carrossel").css("visibility","hidden");
+						$(".navegue").css("visibility","hidden");
+				  }
 					$("#carrossel ul").append(conteudo);
 					$("#carrossel").jCarouselLite({
 						btnPrev: '.prev',
