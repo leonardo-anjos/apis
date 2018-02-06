@@ -4,7 +4,7 @@
 
 https://devserpro.github.io/apis/
 
-## Para mostrar link para determinada API (ex: API CPF)
+## Para mostrar link apenas para determinada API (ex: API CPF)
 
 https://devserpro.github.io/apis/?api=cpf
 
