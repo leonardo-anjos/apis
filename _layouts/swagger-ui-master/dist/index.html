@@ -43,9 +43,20 @@
     <script type="text/javascript">
         $(function () {
             var url = getParameterByName("url");
+            console.log("URL = " + url);
+            var url2 = getParameterByName("url");
             var amb = getParameterByName("amb");
 	    var bearer = getParameterByName("bearer");
-
+      var trial = (bearer == '4e1a1858bdd584fdc077fb7d80f39283');
+      var urlBase = url.substring(0,url.search("/store/"));
+      console.log(url.substring(0,url.search("/store/")));
+      var linkDoc = '';
+      if(trial){
+        linkDoc = 'https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer='+bearer+'&url='+urlBase+'/store/api-docs/admin/timestamp_check-trial/1';
+      }
+      else{
+        linkDoc = 'https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer='+bearer+'&url='+urlBase+'/store/api-docs/admin/timestamp_check/1';
+      }
 
 	    function getParameterByName(name, url) {
 		if (!url) url = window.location.href;
@@ -62,6 +73,7 @@
                 dom_id: "swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
                 onComplete: function (swaggerApi, swaggerUi) {
+                    $("#link-timestamp").html('<code><a href="https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer='+bearer+'&url='+linkDoc+'">Documenta&ccedil;&atilde;o Carimbo de Tempo</a></code>');
                     if (typeof initOAuth == "function") {
 
                         initOAuth({
@@ -209,6 +221,7 @@
         $(function () {
             $("[data-toggle='tooltip']").tooltip();
         });
+
     </script>
 
 	<!-- CSS para personalizar documentação da API Serpro -->
