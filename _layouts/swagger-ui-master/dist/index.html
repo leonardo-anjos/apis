@@ -73,7 +73,7 @@
                 dom_id: "swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
                 onComplete: function (swaggerApi, swaggerUi) {
-                    $("#link-timestamp").html('<code><a href="https://rawgit.com/devserpro/apis/master/_layouts/swagger-ui-master/dist/index.html?bearer='+bearer+'&url='+linkDoc+'">Documenta&ccedil;&atilde;o Carimbo de Tempo</a></code>');
+                    $("#link-timestamp").html('<code><a href="'+linkDoc+'">Documenta&ccedil;&atilde;o Carimbo de Tempo</a></code>');
                     if (typeof initOAuth == "function") {
 
                         initOAuth({
