@@ -49,24 +49,6 @@
         "responses": {}
       }
     },
-    "Requisitos para validação Biométrica": {
-      "head": {
-        "tags": [
-          "1 Introdução"
-        ],
-        "summary": "Requisitos para o envio das imagens",
-        "description": "O módulo de Reconhecimento Facial do Datavalid necessita de imagens com resolução mínima de 250 x 250 pixels. Quando esta condição não é atendida, é retornado o seguinte erro (exceção):  \n\n 
-          \n\n --------------------------",
-        "responses": {
-          "error_description": {
-            "description":  "Resolução da imagem inválida. A largura e a altura não podem ser menor que 250 pixels. "
-          },
-          "error": {
-            "description": "Resolução da imagem inválida. A largura e a altura não podem ser menor que 250 pixels. "
-          }
-        }
-      }
-    },
     "Códigos de Retorno do Serviço": {
       "head": {
         "tags": [
