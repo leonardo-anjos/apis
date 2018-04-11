@@ -48,8 +48,8 @@
 <script>
 
 	var mapaSwagger = new Map();
-	mapaSwagger.set("https://apigateway.serpro.gov.br","https://apigov.serpro.gov.br");
-	mapaSwagger.set("https://gateway.apiserpro.serpro.gov.br","https://store.apiserpro.serpro.gov.br");
+	mapaSwagger.set("https://apigateway.serpro.gov.br","bsa.json");
+	mapaSwagger.set("https://gateway.apiserpro.serpro.gov.br","spo.json");
 
 	var defaultBearer = '4e1a1858bdd584fdc077fb7d80f39283';
 	var defaultAmb = 'https://apigateway.serpro.gov.br';
@@ -385,7 +385,7 @@
 							if (meuJSON.projetos[i].api == "datavalid"){
 								ambUrl = "";
 							}
-							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + ((mock)? ambUrl+projeto.urlJsonSwaggerMock : ambUrl+projeto.urlJsonSwaggerProducao) + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
+							conteudo = conteudo + '<li style="overflow: hidden; float: left; width: 200px; height: 150px;"><img onclick="carregarSwagger(\'' + ((mock)? projeto.urlJsonSwaggerMock+ambUrl : projeto.urlJsonSwaggerProducao+ambUrl) + '\')" src="https://raw.githubusercontent.com/devserpro/apis/master/_layouts/' + projeto.logo + '" style="cursor: pointer; ' + projeto.style + '" /></li>';
 						}
 					}
 					//Se for passado api datavalid então o conteudo será definido para Datavalid Produção
