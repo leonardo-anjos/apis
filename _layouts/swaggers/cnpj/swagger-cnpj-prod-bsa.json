@@ -111,12 +111,6 @@
           },
           "type": "array"
         },
-        "cnae_secundarias": {
-          "items": {
-            "$ref": "#/definitions/CodigoDescricao"
-          },
-          "type": "array"
-        },
         "nome_orgao": {
           "type": "string"
         },
@@ -125,12 +119,6 @@
         },
         "data_situacao_especial": {
           "type": "string"
-        },
-        "socios": {
-          "items": {
-            "$ref": "#/definitions/Socios"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -181,29 +169,6 @@
           "type": "string"
         },
         "data": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "Socios": {
-      "properties": {
-        "nome": {
-          "type": "string"
-        },
-        "qualificacao": {
-          "type": "string"
-        },
-        "captalSocial": {
-          "type": "string"
-        },
-        "codigoPais": {
-          "type": "string"
-        },
-        "qualificacaoRepLegal": {
-          "type": "string"
-        },
-        "nomeRepLegal": {
           "type": "string"
         }
       },
