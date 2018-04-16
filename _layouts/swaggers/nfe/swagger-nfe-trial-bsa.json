@@ -44,7 +44,7 @@
           },
           {
             "description": "Solicitação de assinatura de carimbo de tempo. Informe 1 para assinar, ou deixe em branco para não assinar.",
-            "name": "x-signature",
+            "name": "X-signature",
             "in": "header",
             "type": "string"
           }
