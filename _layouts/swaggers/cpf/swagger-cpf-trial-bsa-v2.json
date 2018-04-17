@@ -82,7 +82,7 @@
           "1 Introdução"
         ],
         "summary": "Endereços para consumo da API",
-        "description": "## Produção\n### Endereço Base de Produção\n \n    https://apigateway.serpro.gov.br/consulta-cpf/v1/\n    \n## Degustação\n\n    \n\n### Endereço Base de Degustação\n\n    https://apigateway.serpro.gov.br/consulta-cpf-trial/1/      "
+        "description": "\nPara consumo das API, deve-se unir o endereço base, mais a operação desejada.\n\n#### Ex:\n* Endereço base: https://apigateway.serpro.gov.br/consulta-cpf-trial/1\n* Operação: /cpf/{ni}\n\nResultado: https://apigateway.serpro.gov.br/consulta-cpf-trial/1/cpf/{ni}\n\n\nOnde {ni} é o número do CPF a ser consultado\n### Produção\n#### Endereço Base de Produção\n \n    https://apigateway.serpro.gov.br/consulta-cpf/v1/\n    \n### Degustação\n\n    \n\n#### Endereço Base de Degustação\n\n    https://apigateway.serpro.gov.br/consulta-cpf-trial/1/      "
       }
     },
     "/cpf/{ni}": {
