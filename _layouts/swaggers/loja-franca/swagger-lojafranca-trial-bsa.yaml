@@ -1,0 +1,497 @@
+host: apigateway.serpro.gov.br
+security:
+  - Bearer: []
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+swagger: '2.0'
+tags:
+  - name: 1 Introdução
+  - name: 2 Padrões
+  - name: 3 Tabelas
+  - name: 4 Métodos e Testes Consultas
+  - name: 4 Métodos e Testes Venda
+  - name: 4 Métodos e Testes Devolução/Troca
+info:
+  version: '1'
+  title: API Loja Franca
+basePath: /loja-franca-trial/api/
+paths:
+  Descrição:
+    head:
+      tags:
+        - 1 Introdução
+      summary: API Loja Franca
+      description: >-
+        A `API Loja Franca` é disponibilizada através de serviço `HTTP
+        REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.
+        
+        <br/>
+        Destacamos que o sistema foi implementado recentemente para as lojas francas prepararem as adaptações necessárias aos seus sistemas próprios, podendo ainda ocorrer instabilidades pontuais.
+        
+        ### Autenticação
+    
+        Para testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.
+        
+        <br/>
+        Para informações de como se autenticar antes de consumir as API, por favor,
+        consulte a documentação em:
+        https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        
+        
+    responses: {}
+  Formatos e Tipos:
+    head:
+      tags:
+        - 2 Padrões
+      summary: Formatos e Tipos
+      description: >-
+
+        Os seguintes tipos de dados são utilizados pela API Loja Franca:
+
+
+        | Tipos | Descrição | Formato
+
+        | ---------------------- |
+        :------------------------------------------------------------- | ------------------ |
+
+        | string        | Cadeia de caracteres |
+
+        | string - data     | String com formato de data  | yyyy-MM-dd
+
+        | string - data/hora | String com formato de data e hora | yyyy-MM-ddTHH:mm:ss
+
+        | integer | Número inteiro que representa códigos e identificadores |
+
+        | number | Número inteiro em situações que pode passar do valor 2^31-1 |
+        
+        | decimal | Número fracionado, sempre com duas casas após o decimal, separado por "." | Ex: 123456789012.22 (Exceto cotação do dólar, que pode ter até 3 casas após o decimal).
+
+         --------------------------
+    responses: {}
+  Tratamento de Erros:
+    head:
+      tags:
+        - 2 Padrões
+      summary: Formatos e Tipos
+      description: >-
+
+        **Erros de negócio:**
+        
+        <br/>
+        São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância entre os parâmetros enviados e as regras de negócio estabelecidas para as lojas francas.
+        
+        A resposta HTTP será:
+        
+        | Status Code | Descrição 
+        
+        | ----------- | ---------
+        
+        | 422         | Erro de Negócio do Loja Franca
+
+        <br/>
+        **Atributos da resposta - Status code 422**
+        
+        <br/>
+
+        | Nome | Descrição | Tipo 
+        
+        | ----------- | --------- | -----
+        
+        | codigo      | Código que identifica o erro | integer
+        
+        | mensagem    | Mensagem de Erro | string
+        
+        <br/>
+        **Erros de formatação**
+        
+        <br/>
+        São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância na formatação/tipo de dados sugeridos pelos parâmetros enviados.
+        
+        <br/>
+        A resposta HTTP será:
+        
+        | Status Code | Descrição 
+        
+        | ----------- | ---------
+        
+        | 400         | Erro de formatação dos parâmetros enviados
+        
+        <br/>
+        **Atributos da resposta - Status code 400**
+        
+        <br/>
+
+        | Nome | Descrição | Tipo 
+        
+        | ----------- | --------- | -----
+        
+        | codigo      | Código que identifica o erro | integer
+        
+        | mensagem    | Mensagem de Erro | string        
+        
+        <br/>
+        Independentemente do tipo de erro, as mensagens de erro podem conter uma <tag>, que visa facilitar o tratamento do erro caso a aplicação que esteja utilizando a API do Loja Franca de Fronteira queira fazer algum tratamento específico, como por exemplo, uma extração de parâmetros a partir de uma mensagem de erro.
+
+        <br/>
+        Os erros que a API do Loja Franca de Fronteira dispara podem ser consultados na tabela de erros, mais abaixo.
+    responses: {}    
+  Tabela de produtos:
+    head:
+      tags:
+        - 3 Tabelas
+      summary: Formatos e Tipos
+      description: >-
+
+        | Código | Descrição 
+        
+        | ----------- | ---------
+        
+        | 1         | Bebida alcoólica
+        
+        | 2         | Cigarro
+        
+        | 3         | Fumo
+        
+    responses: {}    
+  Tabela de tipos de documento:
+    head:
+      tags:
+        - 3 Tabelas
+      summary: Formatos e Tipos
+      description: >-
+
+        | Código | Descrição | Código do País | País 
+        
+        | ------ | --------- | -------------- | ----
+        
+        | 1         | Passaporte | TODOS OS PAÍSES | 
+        
+        | 2         | Registro de Identidade Civil | 105 | Brasil
+        
+        | 3         | Cédula de Identidade AC | 105 | Brasil
+        
+        | 4         | Cédula de Identidade AL | 105 | Brasil
+        
+        | 5         | Cédula de Identidade AM | 105 | Brasil
+        
+        | 6         | Cédula de Identidade AP | 105 | Brasil
+        
+        | 7         | Cédula de Identidade BA | 105 | Brasil
+        
+        | 8         | Cédula de Identidade CE | 105 | Brasil
+        
+        | 9         | Cédula de Identidade DF | 105 | Brasil
+        
+        | 10        | Cédula de Identidade ES | 105 | Brasil
+        
+        | 11        | Cédula de Identidade GO | 105 | Brasil
+        
+        | 12        | Cédula de Identidade MA | 105 | Brasil
+        
+        | 13        | Cédula de Identidade MG | 105 | Brasil
+        
+        | 14        | Cédula de Identidade MS | 105 | Brasil
+        
+        | 15        | Cédula de Identidade MT | 105 | Brasil
+        
+        | 16        | Cédula de Identidade PA | 105 | Brasil 
+        
+        | 17        | Cédula de Identidade PB | 105 | Brasil
+        
+        | 18        | Cédula de Identidade PE | 105 | Brasil
+        
+        | 19        | Cédula de Identidade PI | 105 | Brasil
+        
+        | 20        | Cédula de Identidade PR | 105 | Brasil
+        
+        | 21        | Cédula de Identidade RJ | 105 | Brasil
+        
+        | 22        | Cédula de Identidade RN | 105 | Brasil
+        
+        | 23        | Cédula de Identidade RO | 105 | Brasil
+        
+        | 24        | Cédula de Identidade RR | 105 | Brasil
+        
+        | 25        | Cédula de Identidade RS | 105 | Brasil
+        
+        | 26        | Cédula de Identidade SC | 105 | Brasil
+        
+        | 27        | Cédula de Identidade SE | 105 | Brasil
+        
+        | 28        | Cédula de Identidade SP | 105 | Brasil
+        
+        | 29        | Cédula de Identidade TO | 105 | Brasil
+        
+        | 30        | Cédula de Identidade para estrangeiro | 105 | Brasil
+        
+        | 31        | Documento Nacional de Identidad | 63 | Argentina 
+        
+        | 32        | Cédula de Identidad | 586 | Paraguai
+        
+        | 33        | Cédula de Identidad | 845 | Uruguai
+        
+        | 34        | Cédula de Identidad | 845 | Venezuela
+        
+        | 35        | Cédula de Identidad para Nacionales | 97 | Bolívia
+        
+        | 36        | Cédula de Identidad para Extranjeros | 97 | Bolívia
+        
+        | 37        | Cédula de Identidad | 158 | Chile
+        
+        | 38        | Cédula de Ciudadanía | 169 | Colômbia
+        
+        | 39        | Tarjeta de Identidad | 169 | Colômbia
+        
+        | 40        | Cédula de Extranjería | 169 | Colômbia
+        
+        | 41        | Cédula de Ciudadanía | 239 | Equador
+        
+        | 42        | Cédula de Identidad para extranjeros | 239 | Equador
+        
+        | 43        | Documento Nacional de Identidad | 589 | Peru
+        
+        | 44        | Carné de Extranjería | 589 | Peru
+
+    responses: {}        
+  Tabela de países:
+    head:
+      tags:
+        - 3 Tabelas
+      summary: Tabela de países
+      description: >-
+        Ver [tabela de países da Receita Federal do Brasil](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=22672 "Tabela de países da Receita Federal do Brasil")
+  Tabela de erros:
+    head:
+      tags:
+        - 3 Tabelas
+      summary: Tabela de Erros
+      description: >-
+      
+        | Código | Mensagem
+        
+        | ------ | --------
+        
+        | 1   | Estrutura do JSON de entrada diferente da definição do serviço.
+        
+        | 2   | Chave obrigatória {0} sem conteúdo.
+        
+        | 3   | {0} com tamanho ou formato diferente da definição do serviço.
+        
+        | 4   | Certificado não foi informado, não é de Equipamento e/ou não é válido.
+        
+        | 9   | cnpjLoja {0} não existe como Loja.
+        
+        | 10  | cnpjLoja diferente do Certificado de Autenticação.
+        
+        | 11  | cnpjLoja {0} Suspenso.
+        
+        | 12  | cnpjLoja {0} Cancelado.
+        
+        | 13  | paisOrigem não localizado na Tabela de Países.
+        
+        | 14  | tipoDocumento inválido.
+        
+        | 15  | CPF inválido.
+        
+        | 16  | Viajante não localizado.
+        
+        | 17  | CPF obrigatório para brasileiros (paisOrigem = Brasil).
+        
+        | 18  | CPF diferente do CPF vinculado ao documento {0} através de venda no dia {1} .
+        
+        | 19  | CPF diferente do CPF vinculado ao documento {0} pela RFB.
+        
+        | 20  | dataNascimento e nomeNoDocumento obrigatórios para estrangeiro com CPF não informado.
+        
+        | 21  | Documento não pode ser vinculado ao CPF {0} pois desvinculado desse CPF pela RFB.
+        
+        | 22  | valorTotalItensImportados ou valorTotalItensNacionais deve ser maior que zero.
+        
+        | 23  | valorTotalItensNacionais não pode ser maior que saldo de cota: {0}
+        
+        | 24  | valorCotacaoLoja deve ser maior que zero.
+        
+        | 25  | produtoControleQuantitativo.codigoProduto {0} não localizado na Tabela de Produtos.
+        
+        | 26  | produtoControleQuantitativo.codigoProduto {0} já informado na venda.
+        
+        | 27  | produtoControleQuantitativo.quantidade deve ser maior que zero e não superior ao limite de {0} {1} .
+        
+        | 28  | produtoControleQuantitativo.valorTotalProdutos deve ser maior que zero.
+        
+        | 29  | Venda gera imposto inferior ao limite mínimo (R$ {0} ) para geração de DARF.
+        
+        | 30  | Somatório dos produtoControleQuantitativo.valorTotal maior que valorTotalItensImportados + valorTotalItensNacionais.
+        
+        | 31  | idVenda não localizado.
+        
+        | 32  | {0} DV inválido.
+        
+        | 33  | {0} emitida por CNPJ diferente da loja.
+        
+        | 34  | {0} já informada em outras operações.
+        
+        | 35  | {0} DV inválido.
+        
+        | 36  | {0} emitida por CNPJ diferente da loja.
+        
+        | 37  | {0} já informada em outras operações.
+        
+        | 38  | Venda foi entregue anteriormente.
+        
+        | 39  | Venda foi cancelada anteriormente.
+        
+        | 40  | Venda foi totalmente devolvida anteriormente.
+        
+        | 41  | Venda não foi entregue anteriormente.
+        
+        | 42  | produtoControleQuantitativo.codigoProduto {0} não informado na venda.
+        
+        | 43  | produtoControleQuantitativo.codigoProduto {0} já informado na devolução.
+        
+        | 44  | produtoControleQuantitativo.quantidade deve ser maior que zero e não superior ao saldo da venda.
+        
+        | 45  | produtoControleQuantitativo.valorTotal deve ser maior que zero e não superior ao saldo da venda.
+        
+        | 46  | valorTotalItensImportados + valorTotalItensNacionais maior que saldo da venda.
+        
+        | 52  | Data de nascimento diferente do {0}.
+        
+        | 54  | Venda desvinculada do Viajante.
+        
+        | 55  | CPF não localizado.
+        
+        | 56  | Data sem cotação do dólar.
+        
+        | 57  | Situação do CPF inválida.
+        
+        | 58  | notaFiscalSaida igual a notaFiscalEntrada
+        
+        | 99  | Erro no ambiente {0} . {1} .
+        
+        | -99  | Erro na comunicação com algum outro sistema externo que a API do Loja Franca de Fronteira se integra.
+  '/viajante/cota':
+    post:
+      tags:
+      - 4 Métodos e Testes Consultas
+      summary: Consulta de cota
+      description: >-
+        Retorna a cota disponível para um determinado viajante
+        
+        <br/>
+        OBS: Para Viajante Brasileiro, a identificação pelo número de documento CPF é **sempre obrigatória**
+      consumes: 
+      - "application/json"
+      produces: 
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        schema:
+          $ref: "#/definitions/EntradaCota"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: '#/definitions/SaidaCota'
+        422:
+          description: "Erro de Negócio"
+  '/viajante/consulta':
+    post:
+      tags:
+        - 4 Métodos e Testes Consultas
+      summary: Consulta de viajante
+      description: >-
+        Retorna o nome, a data de nascimento e a data da última venda de um determinado viajante.
+    responses: {}
+  '/cotacaoDolar?dataCotacao={dataCotacao}':
+    get:
+      tags:
+        - 4 Métodos e Testes Consultas
+      summary: Consulta cotação do dólar
+      description: >-
+        Retorna a cotação do dólar de uma determinada data.
+    responses: {}
+  '/viajante/venda':
+    post:
+      summary: Processa venda de viajante
+      tags:
+        - 4 Métodos e Testes Venda
+      description: >-
+        Efetua uma operação de processamento de venda.
+        
+        <br/>
+        OBS.: Para Viajante Brasileiro, a identificação pelo número de documento de CPF é **sempre obrigatória**. A identificação por documento é **sempre obrigatória** independentemente se o Viajante for Brasileiro ou Estrangeiro.
+  '/venda/entrega?idVenda={idVenda}&notaFiscalSaida={notaFiscalSaida}':
+    put:
+      summary: Entrega venda para viajante
+      tags:
+        - 4 Métodos e Testes Venda
+      description: >-
+        Efetua a operação de entrega de venda
+  '/venda/cancelamento?idVenda={idVenda}':
+    put:
+      summary: Cancela venda de viajante
+      tags:
+        - 4 Métodos e Testes Venda
+      description: >-
+        Efetua uma operação de cancelamento de venda
+  '/venda/devolucaoParcial':
+    post:
+      summary: Devolução parcial de venda
+      tags:
+        - 4 Métodos e Testes Devolução/Troca
+      description: >-
+        Efetua uma operação de devolução parcial de venda
+  '/venda/devolucaoTotal?idVenda={idVenda}&notaFiscalEntrada={notaFiscalEntrada}':
+    put:
+      summary: Devolução total de venda
+      tags:
+        - 4 Métodos e Testes Devolução/Troca
+      description: >-
+        Efetua uma operação de devolução total de venda     
+consumes:
+  - application/json
+schemes:
+  - https
+definitions:
+  EntradaCota:
+    type: object
+    properties:
+      cpf:
+        type: string
+        description: 'CPF do Viajante'
+        example: "00000000191"
+      dataNascimento:
+        type: string
+        description: 'Data de Nascimento do Viajante'   
+        example: "1981-12-15"
+  SaidaCota:
+    type: object
+    properties:
+      nomeViajante:
+        type: string
+        description: "Nome do Viajante"
+        example: "FULANO DE TAL"
+      dataUltimaVenda:
+        type: string
+        description: "Data da última venda para o viajante"
+        example: "2017-12-08T17:13:55"
+      valorSaldoCota:
+        type: number
+        description: "Saldo da cota do viajante"
+        example: 300.0
+      saldoCotaProduto:
+        type: array
+        items:
+          type: object
+          properties:
+            codigoProduto:
+              type: integer
+              example: 1
+            quantidade:
+              type: integer
+              example: 10
+        
