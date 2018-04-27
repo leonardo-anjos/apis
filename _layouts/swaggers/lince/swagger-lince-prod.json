@@ -1,0 +1,154 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "O Decodificador Lince permite agilizar e automatizar o processo de autenticação de documentos compatíveis.",
+    "version": "1.0",
+    "title": "Decodificador Lince"
+  },
+  "host": "lincedec.estaleiro.serpro.gov.br",
+  "tags": [
+    {
+      "name": "1. Introdução"
+    },
+    {
+      "name": "2. Referência da API"
+    }
+  ],
+  "basePath": "/api/v1",
+  "paths": {
+    "O que é o Lince": {
+      "head": {
+        "tags": [
+          "1. Introdução"
+        ],
+        "summary": "O Lince lê QR Code",
+        "description": "O Lince lê QR Code de forma descritiva",
+        "responses": {}
+      }
+    },
+    "O que é o serviço de decodificação": {
+      "head": {
+        "tags": [
+          "1. Introdução"
+        ],
+        "summary": "Você chama e a API faz o resto",
+        "description": "Você chama e a API do Lince faz o resto de forma descritiva",
+        "responses": {}
+      }
+    },
+    "Códigos de retorno": {
+      "head": {
+        "tags": [
+          "1. Introdução"
+        ],
+        "summary": "Lista de códigos HTTP de retorno e seus significados",
+        "description": "Lista compreensiva de códigos HTTP de retorno e seus significados",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "400": {
+            "description": "Deu rolo"
+          }
+        }
+      }
+    },
+    "/qrcode/decode/content": {
+      "post": {
+        "tags": [
+          "2. Referência da API"
+        ],
+        "summary": "Decodifica uma sequência de bytes",
+        "description": "Decodifica uma sequência de bytes que foi extraída de um QR Code Lince",
+        "operationId": "decodeQRCode",
+        "consumes": [
+          "application/octet-stream"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "qrCodeContent",
+            "description": "Dados lidos do QR Code Lince, expressos como uma sequência crua de bytes",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dados do documento contido no QR Code Licne",
+            "schema": {
+              "$ref": "#/definitions/Documento"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Documento": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/Modelo"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "image": {
+          "$ref": "#/definitions/Imagem"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Modelo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Campo"
+          }
+        }
+      }
+    },
+    "Imagem": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "base64": {
+          "type": "string"
+        }
+      }
+    },
+    "Campo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
