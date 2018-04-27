@@ -5,12 +5,22 @@
         "version": "1.0",
         "title": "Decodificador Lince"
     },
+    "security": [{
+        "Bearer": []
+    }],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
     "host": "lincedec.estaleiro.serpro.gov.br",
     "tags": [{
-            "name": "1. Introdução"
+            "name": "1 Introdução"
         },
         {
-            "name": "2. Referência da API"
+            "name": "2 Referência da API"
         }
     ],
     "basePath": "/api/v1",
@@ -18,45 +28,37 @@
         "O que é o Lince": {
             "head": {
                 "tags": [
-                    "1. Introdução"
+                    "1 Introdução"
                 ],
                 "summary": "O Lince lê QR Code",
-                "description": "O Lince lê QR Code de forma descritiva",
+                "description": "O Lince lê QR Code de forma descritiva"
             },
             "responses": {}
         },
         "O que é o serviço de decodificação": {
             "head": {
                 "tags": [
-                    "1. Introdução"
+                    "1 Introdução"
                 ],
                 "summary": "Você chama e a API faz o resto",
-                "description": "Você chama e a API do Lince faz o resto de forma descritiva",
+                "description": "Você chama e a API do Lince faz o resto de forma descritiva"
             },
             "responses": {}
         },
         "Códigos de retorno": {
             "head": {
                 "tags": [
-                    "1. Introdução"
+                    "1 Introdução"
                 ],
                 "summary": "Lista de códigos HTTP de retorno e seus significados",
-                "description": "Lista compreensiva de códigos HTTP de retorno e seus significados",
+                "description": "Lista compreensiva de códigos HTTP de retorno e seus significados"
 
-            },
-            "responses": {
-                "200": {
-                    "description": "Ok"
-                },
-                "400": {
-                    "description": "Deu rolo"
-                }
             }
         },
         "/qrcode/decode/content": {
             "post": {
                 "tags": [
-                    "2. Referência da API"
+                    "2 Referência da API"
                 ],
                 "summary": "Decodifica uma sequência de bytes",
                 "description": "Decodifica uma sequência de bytes que foi extraída de um QR Code Lince",
@@ -73,7 +75,6 @@
                     "description": "Dados lidos do QR Code Lince, expressos como uma sequência crua de bytes",
                     "required": true
                 }]
-
             },
             "responses": {
                 "200": {
