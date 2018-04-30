@@ -30,8 +30,8 @@
                 "tags": [
                     "1 Introdução"
                 ],
-                "summary": "O Lince lê QR Code",
-                "description": "O Lince lê QR Code de forma descritiva"
+                "summary": "O que é o Lince",
+                "description": "O Lince é um leitor de QR Codes especiais (o QR Code Lince) cuja função é replicar dados contidos em um documento de identificação de forma segura e livre de falsificação. Isso é possível pois os QR Codes Lince são encriptados na fonte, o que significa que a mínima alteração nos dados será imediatamente identificada pela aplicação, permitindo a detecção de fraudes pela comparação dos dados lidos com o documento físico."
             },
             "responses": {}
         },
@@ -40,27 +40,17 @@
                 "tags": [
                     "1 Introdução"
                 ],
-                "summary": "Você chama e a API faz o resto",
-                "description": "Você chama e a API do Lince faz o resto de forma descritiva"
+                "summary": "O que é o serviço de decodificação",
+                "description": "Para uso em campo o aplicativo Lince para smartphones é a ferramenta usada para ler QR Codes Lince. No entanto essa ferramenta não é prática para uso em larga escala, em quiosques, balcões, recepções e qualquer outro local onde é necessário ler vários QR Codes em sequẽncia.\n\nO serviço de decodificação Lince é uma API REST robusta e altamente disponível que pode ser integrada a qualquer sistema com acesso à Internet para suprir a necessidade de decodificações automatizadas de QR Codes Lince."
             },
             "responses": {}
         },
-        "Códigos de retorno": {
-            "head": {
-                "tags": [
-                    "1 Introdução"
-                ],
-                "summary": "Lista de códigos HTTP de retorno e seus significados",
-                "description": "Lista compreensiva de códigos HTTP de retorno e seus significados"
-
-            }
-        },
-        "/qrcode/decode/content": {
+        "/qrcode/decode": {
             "post": {
                 "tags": [
                     "2 Referência da API"
                 ],
-                "summary": "Decodifica uma sequência de bytes",
+                "summary": "Decodificar dados do QR Code Lince",
                 "description": "Decodifica uma sequência de bytes que foi extraída de um QR Code Lince",
                 "operationId": "decodeQRCode",
                 "consumes": [
@@ -78,10 +68,19 @@
             },
             "responses": {
                 "200": {
-                    "description": "Dados do documento contido no QR Code Licne",
+                    "description": "Sucesso, retorna informações do documento",
                     "schema": {
                         "$ref": "#/definitions/Documento"
                     }
+                },
+                "422": {
+                    "description": "Dados do QR Code não puderam ser processados, corpo de retorno contém o motivo",
+                    "schema": {
+                        "$ref": "#/definitions/Documento"
+                    }
+                },
+                "default": {
+                    "description": "Erro inesperado"
                 }
             }
         }
