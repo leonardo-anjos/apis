@@ -20,7 +20,10 @@
             "name": "1 Introdução"
         },
         {
-            "name": "2 Referência da API"
+            "name": "2 Integrando o Decodificador Lince"
+        },
+        {
+            "name": "3 Referência da API"
         }
     ],
     "basePath": "/api/v1",
@@ -31,7 +34,7 @@
                     "1 Introdução"
                 ],
                 "summary": "O que é o Lince",
-                "description": "O Lince é um leitor de QR Codes especiais (o QR Code Lince) cuja função é replicar dados contidos em um documento de identificação de forma segura e livre de falsificação. Isso é possível pois os QR Codes Lince são encriptados na fonte, o que significa que a mínima alteração nos dados será imediatamente identificada pela aplicação, permitindo a detecção de fraudes pela comparação dos dados lidos com o documento físico."
+                "description": "O Lince é um sistema de certificação de autenticidade de documentos de identificação. Documentos compatíveis portam o QR Code Lince, um QR Code que replica os dados contidos no documento utilizando encriptação forte para garantir a autenticidade dos dados. Além disso QR Codes Lince são encriptados na fonte a partir de informações fornecidas pela própria entidade emissora do documento, garantindo o não-repúdio.\n\nO sistema Lince é composto por 3 partes:\n\n* API REST para criação de QR Codes Lince: API utilizada por entidades emissoras para solicitar a encriptação dos dados fornecidos e geração do QR Code Lince\n* API REST para decodificação de QR Codes Lince: Integrada a qualquer entidade que deseje decodificar e validar QR Codes Lince de forma automatizada\n* Aplicativos Lince para Android e iOS: Disponíveis gratuitamente nas respectivas lojas online, esses aplicativos são capazes de decodificar e validar QR Codes Lince offline em situações onde a automação não seja necessária"
             },
             "responses": {}
         },
@@ -41,14 +44,14 @@
                     "1 Introdução"
                 ],
                 "summary": "O que é o serviço de decodificação",
-                "description": "Para uso em campo o aplicativo Lince para smartphones é a ferramenta usada para ler QR Codes Lince. No entanto essa ferramenta não é prática para uso em larga escala, em quiosques, balcões, recepções e qualquer outro local onde é necessário ler vários QR Codes em sequẽncia.\n\nO serviço de decodificação Lince é uma API REST robusta e altamente disponível que pode ser integrada a qualquer sistema com acesso à Internet para suprir a necessidade de decodificações automatizadas de QR Codes Lince."
+                "description": "O serviço de decodificação Lince é uma API REST robusta e altamente disponível, que pode ser integrada a qualquer sistema com acesso à Internet para decodificar QR Codes Lince.\n\nPara mera conferência da autenticidade do documento pode-se utilizar o aplicativo Lince, disponível gratuitamente nas lojas Android e iOS. Se a sua necessidade é integrar a leitura do QR Code Lince com os seus sistemas automatizados em balcões de atendimento, quiosques ou recepções utilizando pistolas convencionais para leitura de códigos de barras bidimensionais, esta API REST foi feita para você."
             },
             "responses": {}
         },
         "/qrcode/decode": {
             "post": {
                 "tags": [
-                    "2 Referência da API"
+                    "3 Referência da API"
                 ],
                 "summary": "Decodificar dados do QR Code Lince",
                 "description": "Decodifica uma sequência de bytes que foi extraída de um QR Code Lince",
