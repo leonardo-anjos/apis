@@ -94,9 +94,6 @@
                         "schema": {
                             "$ref": "#/definitions/Documento"
                         }
-                    },
-                    "default": {
-                        "description": "Erro inesperado"
                     }
                 }
             }
