@@ -58,7 +58,7 @@
                 "responses": {}
             }
         },
-        "/qrcode/decode": {
+        "/qrcode/verify": {
             "post": {
                 "tags": [
                     "3 Referência da API"
