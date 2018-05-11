@@ -1,1 +1,1599 @@
-teste
+{
+  "host": "apigateway.serpro.gov.br",
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "1 Introdução"
+    },
+    {
+      "name": "2 Padrões"
+    },
+    {
+      "name": "3 Tabelas"
+    }
+  ],
+  "info": {
+    "version": "1",
+    "title": "API DUE"
+  },
+  "basePath": "/due-trial/api/",
+  "paths": {
+    "Descrição": {
+      "head": {
+        "tags": [
+          "1 Introdução"
+        ],
+        "summary": "API DUE - Declaração Unica de Exportação",
+        "description": "### Bem vindo a API DUE - Perfil Instituição Financeira. \n    Consolidamos aqui as informações técnicas para a integração dos sistemas próprios das instituições financeiras com os serviços do Portal Único do Comércio Exterior, baseado nas instruções de uso e contratação conforme a plataforma de habilitação API Serpro. A API DUE foi desenvolvida baseada na arquitetura REST/JSON no formato UTF-8.\n\n### <br> API Serpro - Plataforma de Habilitação \n  Todas as Instituições Financeiras que possuem perfil de acesso para realizar a consulta DUE em tela no Portal Único do Comércio Exterior já estão aptas a celebrar o contrato comercial com o Serpro para consumo da API DUE.\n\n  <br> O contratante terá acesso a todas as informações relacionadas ao modelo de sustentação comercial e técnica dos serviços API por meio do portal de relacionamento com o cliente Minha Conta, onde as principais funcionalidades são detalhadas no tutorial Área do Cliente.\n\n  <br> As APIs disponibilizadas pela plataforma API Serpro utilizam o protocolo Oauth2 para realizar a autenticação e autorização de acesso das APIs contratadas, que resumidamente seguem o fluxo:\n\n### Fase Contratual - Realizada para obter as credenciais de acesso\nPara consumir as APIs, é necessário utilizar as credenciais de acesso (Consumer Key e Consumer Secret) disponibilizados no portal do Cliente. Esses códigos servem para identificar o contrato. Exemplos de código:\n<br>\n#### Consumer Key: djaR21PGoYp1iyK2n2ACOH9REdUb\n#### Consumer Secret: ObRsAJWOL4fv2Tp27D1vd8fB3Ote\n\n<br> Para garantir a irretratabilidade (não repúdio), o portal do cliente exigirá o certificado digital e-CNPJ (cadeia ICP Brasil) da contratante para visualizar essas credenciais de acesso.\n\n### Fase Operacional\n#### Consumo da API - Passo 1 - Token de Acesso (Bearer)\nPara consultar as APIs disponibilizadas pelo SERPRO, é necessário obter um Token de Acesso Temporário (Bearer). Esse token possui um tempo de validade e sempre que expirado, este passo de requisição de um novo token de acesso deve ser repetido.\n<br> Para solicitar o token temporário é necessário realizar uma requisição HTTP POST para o endpoint Token https://apigateway.serpro.gov.br/token, informando as credenciais de acesso (consumerKey:consumerSecret) no HTTP Header Authorization, no formato base64, formato este que é utilizado para criptografar as credenciais de acesso e com isso garantir sigilo no tráfego de rede.\n<br>\n#### Consumo da API - Passo 2 – Requisição ao serviço API DUE\nDe posse do Token de Acesso (Bearer), a requisição a um dos serviços contratados pode ser realizada conforme o exemplo abaixo. No cabeçalho, deve constar a informação:\n<br> Authorization: Bearer {bearer gerado via https://apigateway.serpro.gov.br/token com base no Consumer Key e Consumer Secret }\n\n<br> Exemplo, no ambiente de VALIDAÇÃO, utilizando o comando cURL no terminal Ubuntu:\n\ncurl -X GET --header \"Accept: application/json\" --header \"Authorization: Bearer 953bae789a1726734005d238e939c978\" \"\n<br> https://apigateway.serpro.gov.br/api-consulta-due-val/api/v1/due/17BR0055562808/17AAA101000\"\n\n<br> onde 17BR0055562808 é o número da DUE e 17AAA101000 é a chave de acesso disponibilizada pelo exportador\nresponses: {}"
+      }
+    },
+    "Formatos e Tipos": {
+      "head": {
+        "tags": [
+          "2 Padrões"
+        ],
+        "summary": "Formatos e Tipos",
+        "description": "\nOs seguintes tipos de dados são utilizados pela API Loja Franca:\n\n| Tipos | Descrição | Formato\n| ---------------------- | :------------------------------------------------------------- | ------------------ |\n| string        | Cadeia de caracteres |\n| string - data     | String com formato de data  | yyyy-MM-dd\n| string - data/hora | String com formato de data e hora | yyyy-MM-ddTHH:mm:ss\n| integer | Número inteiro que representa códigos e identificadores |\n| number | Número inteiro em situações que pode passar do valor 2^31-1 |\n| decimal | Número fracionado, sempre com duas casas após o decimal, separado por \".\" | Ex: 123456789012.22 (Exceto cotação do dólar, que pode ter até 3 casas após o decimal).\n\n --------------------------"
+      },
+      "responses": {}
+    },
+    "Tabela de mensagens": {
+      "head": {
+        "tags": [
+          "3 Tabelas"
+        ],
+        "summary": "Tabela com as mensagens de sucesso e erros",
+        "description": "\n| Código | Mensagem\n| ------ | --------\n| 200   | Operação realizada com sucesso\n| 400   | Requisição mal formatada\n| 403   | Requisição não autorizada\n| 404   | Registro não encontrado\n| 408   | Request time-out\n| 500   | Erro interno do servidor\n| 503   | Serviço indisponível\n| 504   | Gateway time-out "
+      }
+    },
+    "/consultaDUE": {
+      "get": {
+        "tags": [
+          "4 Métodos e Testes Consulta"
+        ],
+        "summary": "Consulta a DUE",
+        "description": "Retorna todas as informações vinculadas à DUE - Declaração Única de Exportação de acordo com o perfil da instituição financeira.\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|numero|Número da DUE|string|Obrigatório\n|chave|Chave de acesso|string|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo \n|----|---------|----\n|bloqueio|Indicador de carga bloqueada para embarque|string\n|canal|Canal atribuído à DUE pelo GR|string\n|chaveDeAcesso|Identificação da Chave de acesso|string\n|dataDeRegistro|Data de Registro da DUE|string\n|declarante|Identificação do Declarante|string\n|embarqueEmRecintoAlfandegado|Indicador se embarque em Recinto|string\n|despachoEmRecintoAlfandegado|Indicador se despacho em Recinto|string\n|enderecoDoEstabelecimentoDoLocalDeDespacho|Endereço de Despacho Fora de Recinto|string\n|enderecoDoEstabelecimentoDoLocalDeEmbarque|Endereço de Embarque Fora de Recinto|string\n|estabelecimentoDoLocalDeDespacho|Identificação do Despacho|string\n|eventosDoHistorico|Eventos vinculados à DUE|string\n|formaDeExportacao|Forma de Exportação|string\n|id|Sequencial da /DUE|string\n|impedidoDeEmbarque|Indicador de carga bloqueada para embarque|string\n|informacoesComplementares|Informações Complementares|string\n|itens|Informações do Item de DUE|string\n|latitudeDoLocalDeEmbarque|Latitude do Embarque|string\n|longitudeDoLocalDeEmbarque|Longitude do Embarque|string\n|latitudeDoLocalDeDespacho|Latitude do Despacho|string\n|longitudeDoLocalDeDespacho|Longitude do Despacho|string\n|moeda|Moeda da Operação|string\n|numero|Número da DUE|string\n|paisImportador|País Importador|string\n|recintoAduaneiroDeDespacho|Recinto Despacho|string\n|recintoAduaneiroDeEmbarque|Recinto Embarque|string\n|referenciaDoEnderecoDoLocalDeDespacho|Referência do Local de Despacho|string\n|referenciaDoEnderecoDoLocalDeEmbarque|Referência do Local do Embarque|string\n|ruc|Registro Único de Carga (RUC)|string\n|situacao|Situação atual da DU-E em relação ao controle aduaneiro|string\n|situacaoDoTratamentoAdministrativo|Situação atual da DU-E em relação ao controle administrativo|string\n|situacaoEspecial|Situação Especial|string\n|situacoesDaCarga|Situação da Carga|string\n|tipo|Tipo de Operação|string\n|tratamentoPrioritario|Indicador de Tratamento Prioritário|string\n|unidadeLocalDeDespacho|Unidade Despacho|string\n|unidadeLocalDeEmbarque|Unidade Embarque|string\n|viaDeTransporteEspecial|Via de Transporte|string\n|responsavelPeloACD|Responsável pelo ACD|string\n|motivoDeDispensaDaNotaFiscal|Movito de Dispensa NF|string\n|justificativaDeDispensaDaNotaFiscal|Justificativa Dispensa NF|string\n|despachoEmRecintoDomiciliar|Justificativa Dispensa NF|string\n|dataDoCCE|Data do Indicador de Carga Completamente Exportada|string\n|dataDeCriacao|Data de Criação da DUE|string\n|dat|Indicador de Exigência de DAT|string\n|oea|Identificador de Operador Econômico Autorizado|string",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "numero",
+            "type": "string",
+            "description": "Número da DUE",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "chave",
+            "type": "string",
+            "description": "Chave de Acesso",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ConsultaDUE"
+            }
+          },
+          "422": {
+            "description": "Erros\nCódigos de erros possíveis: Veja item 3 Tabelas"
+          }
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "definitions": {
+    "ConsultaDUE": {
+      "type": "object",
+      "properties": {
+        "bloqueio": {
+          "type": "string",
+          "example": "false"
+        },
+        "canal": {
+          "type": "string",
+          "example": "string"
+        },
+        "chaveDeAcesso": {
+          "type": "string",
+          "example": "string"
+        },
+        "dataDeRegistro": {
+          "type": "string",
+          "example": "2018-04-20T16:13:41.817Z"
+        },
+        "declarante": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "string",
+                "example": "string"
+              },
+              "nacionalidade": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "nomeResumido": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "embarqueEmRecintoAlfandegado": {
+          "type": "string",
+          "example": "false"
+        },
+        "despachoEmRecintoAlfandegado": {
+          "type": "string",
+          "example": "false"
+        },
+        "enderecoDoEstabelecimentoDoLocalDeDespacho": {
+          "type": "string",
+          "example": "string"
+        },
+        "enderecoDoEstabelecimentoDoLocalDeEmbarque": {
+          "type": "string",
+          "example": "string"
+        },
+        "estabelecimentoDoLocalDeDespacho": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "numeroDoDocumento": {
+                "type": "string",
+                "example": "string"
+              },
+              "estrangeiro": {
+                "type": "string",
+                "example": "false"
+              },
+              "tipoDoDocumento": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "eventosDoHistorico": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "0"
+              },
+              "evento": {
+                "type": "string",
+                "example": "string"
+              },
+              "responsavel": {
+                "type": "string",
+                "example": "string"
+              },
+              "informacoesAdicionais": {
+                "type": "string",
+                "example": "string"
+              },
+              "motivo": {
+                "type": "string",
+                "example": "string"
+              },
+              "detalhes": {
+                "type": "string",
+                "example": "string"
+              },
+              "dataEHoraDoEvento": {
+                "type": "string",
+                "example": "2018-04-20T16:13:41.817Z"
+              }
+            }
+          }
+        },
+        "formaDeExportacao": {
+          "type": "string",
+          "example": "string"
+        },
+        "id": {
+          "type": "string",
+          "example": "0"
+        },
+        "impedidoDeEmbarque": {
+          "type": "string",
+          "example": "false"
+        },
+        "informacoesComplementares": {
+          "type": "string",
+          "example": "string"
+        },
+        "itens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "0"
+              },
+              "ncm": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "UnidadeMedidaEstatistica": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "quantidadeNaUnidadeEstatistica": {
+                "type": "string",
+                "example": "0"
+              },
+              "numero": {
+                "type": "string",
+                "example": "0"
+              },
+              "pesoLiquidoTotal": {
+                "type": "string",
+                "example": "0"
+              },
+              "valorDaMercadoriaNaCondicaoVenda": {
+                "type": "string",
+                "example": "0"
+              },
+              "valorDaMercadoriaNoLocalEmbarque": {
+                "type": "string",
+                "example": "0"
+              },
+              "valorDaMercadoriaNoLocalEmbarqueEmReais": {
+                "type": "string",
+                "example": "0"
+              },
+              "valorTotalItem": {
+                "type": "string",
+                "example": "0"
+              },
+              "dataDeConversao": {
+                "type": "string",
+                "example": "2018-04-20T16:13:41.818Z"
+              },
+              "itemDaNotaFiscalDeExportacao": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "numeroDoItem": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "notaFiscal": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "chaveDeAcesso": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "modelo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "serie": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "numeroDoDocumento": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "ufDoEmissor": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "identificacaoDoEmitente": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "numero": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "nome": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "cnpj": {
+                                  "type": "string",
+                                  "example": "false"
+                                },
+                                "cpf": {
+                                  "type": "string",
+                                  "example": "false"
+                                }
+                              }
+                            }
+                          },
+                          "finalidade": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "quantidadeDeItens": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "notaFiscalEletronica": {
+                            "type": "string",
+                            "example": "false"
+                          }
+                        }
+                      }
+                    },
+                    "cfop": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "codigoDoProduto": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "quantidadeEstatistica": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "unidadeComercial": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "valorTotalBruto": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "valorTotalCalculado": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "ncm": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "UnidadeMedidaEstatistica": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    },
+                    "apresentacaoParaDespacho": {
+                      "type": "string",
+                      "example": "false"
+                    },
+                    "quantidadeConsumida": {
+                      "type": "string",
+                      "example": "0"
+                    }
+                  }
+                }
+              },
+              "itensDeNotaFiscalComplementar": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "numeroDoItem": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "notaFiscal": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "chaveDeAcesso": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "modelo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "serie": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "numeroDoDocumento": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "ufDoEmissor": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "identificacaoDoEmitente": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "numero": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "nome": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "cnpj": {
+                                  "type": "string",
+                                  "example": "false"
+                                },
+                                "cpf": {
+                                  "type": "string",
+                                  "example": "false"
+                                }
+                              }
+                            }
+                          },
+                          "finalidade": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "quantidadeDeItens": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "notaFiscalEletronica": {
+                            "type": "string",
+                            "example": "false"
+                          }
+                        }
+                      }
+                    },
+                    "cfop": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "codigoDoProduto": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "quantidadeEstatistica": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "unidadeComercial": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "valorTotalBruto": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "valorTotalCalculado": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "ncm": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "UnidadeMedidaEstatistica": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    },
+                    "apresentacaoParaDespacho": {
+                      "type": "string",
+                      "example": "false"
+                    },
+                    "quantidadeConsumida": {
+                      "type": "string",
+                      "example": "0"
+                    }
+                  }
+                }
+              },
+              "itensDaNotaDeRemessa": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "numeroDoItem": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "notaFiscal": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "chaveDeAcesso": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "modelo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "serie": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "numeroDoDocumento": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "ufDoEmissor": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "identificacaoDoEmitente": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "numero": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "nome": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "cnpj": {
+                                  "type": "string",
+                                  "example": "false"
+                                },
+                                "cpf": {
+                                  "type": "string",
+                                  "example": "false"
+                                }
+                              }
+                            }
+                          },
+                          "finalidade": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "quantidadeDeItens": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "notaFiscalEletronica": {
+                            "type": "string",
+                            "example": "false"
+                          }
+                        }
+                      }
+                    },
+                    "cfop": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "codigoDoProduto": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "quantidadeEstatistica": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "unidadeComercial": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "valorTotalBruto": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "valorTotalCalculado": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "ncm": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "UnidadeMedidaEstatistica": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    },
+                    "apresentacaoParaDespacho": {
+                      "type": "string",
+                      "example": "false"
+                    },
+                    "quantidadeConsumida": {
+                      "type": "string",
+                      "example": "0"
+                    }
+                  }
+                }
+              },
+              "motivoDoTratamentoPrioritario": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricaoDaMercadoria": {
+                "type": "string",
+                "example": "string"
+              },
+              "exportador": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "nacionalidade": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "nome": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "nomeResumido": {
+                            "type": "string",
+                            "example": "string"
+                          }
+                        }
+                      }
+                    },
+                    "numeroDoDocumento": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "estrangeiro": {
+                      "type": "string",
+                      "example": "false"
+                    },
+                    "tipoDoDocumento": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "unidadeComercializada": {
+                "type": "string",
+                "example": "string"
+              },
+              "percentualDeComissaoDoAgente": {
+                "type": "string",
+                "example": "0"
+              },
+              "atributos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "conteudo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "tratamentosAdministrativos": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "dataDeRegistro": {
+                      "type": "string",
+                      "example": "2018-04-20T16:13:41.818Z"
+                    }
+                  }
+                }
+              },
+              "valorFinanciado": {
+                "type": "string",
+                "example": "0"
+              },
+              "documentosImportacao": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "dataRegistro": {
+                      "type": "string",
+                      "example": "2018-04-20T16:13:41.818Z"
+                    },
+                    "numeroProcesso": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "numeroDI": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "numeroDSI": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "numeroDSIFormulario": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "numeroEDBV": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "complemento": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "quantidadeUtilizada": {
+                      "type": "string",
+                      "example": "0"
+                    }
+                  }
+                }
+              },
+              "atributosDestaqueNcmBD": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricaoMercadoria": {
+                "type": "string",
+                "example": "string"
+              },
+              "codigoCondicaoVenda": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricaoCrt": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "nomeImportador": {
+                "type": "string",
+                "example": "string"
+              },
+              "enderecoImportador": {
+                "type": "string",
+                "example": "string"
+              },
+              "listaDeEnquadramentos": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "itemDue": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "dataRegistro": {
+                            "type": "string",
+                            "example": "2018-04-20T16:13:41.818Z"
+                          },
+                          "identificadorItem": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "niExportador": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "ncm": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "unidadeComercializada": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "qtUnidadeComercializada": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "valorUnitario": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "qtdUnidadeEstatistica": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "descricaoMercadoria": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "pesoLiquidoTotal": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "condicaoVenda": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "dataConversao": {
+                            "type": "string",
+                            "example": "2018-04-20T16:13:41.818Z"
+                          },
+                          "valorCondicaoVenda": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "valorLocalEmbarque": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "descricaoComplementar": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "motivoPrioridade": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "licencaExportacao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "numeroProcesso": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "tipoDeclaracaoImportacao": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "diEletronicaReexp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "dsiEletronicaReexp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "dsiFormularioReexp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "edbvReexp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "bemOuAdicao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "deWebExpTemp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "dueExpTemp": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "prazoExportacaoTemporaria": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "nomeExportador": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "numeroDocumentoIdentificacao": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "nacionalidade": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "nomeImportador": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "enderecoImportador": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "dataBloqueio": {
+                            "type": "string",
+                            "example": "2018-04-20T16:13:41.819Z"
+                          },
+                          "dataDesbloqueio": {
+                            "type": "string",
+                            "example": "2018-04-20T16:13:41.819Z"
+                          },
+                          "atributos": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "codigo": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "conteudo": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "descricao": {
+                                  "type": "string",
+                                  "example": "string"
+                                }
+                              }
+                            }
+                          },
+                          "enquadramentos": {
+                            "type": "string",
+                            "example": "string"
+                          },
+                          "exportacaoPaisDestino": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "dataRegistro": {
+                                  "type": "string",
+                                  "example": "2018-04-20T16:13:41.819Z"
+                                },
+                                "paisDestino": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "qtdUnidadeEstatistica": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "pesoLiquido": {
+                                  "type": "string",
+                                  "example": "0"
+                                }
+                              }
+                            }
+                          },
+                          "percentualDeComissaoDoAgente": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "listaAtoConcessorio": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "tipoAtoConcessorio": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "codigo": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "itemAtoConcessorio": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "valorComCoberturaCambial": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "valorSemCoberturaCambial": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "itemDue": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "dataRegistro": {
+                                  "type": "string",
+                                  "example": "2018-04-20T16:13:41.819Z"
+                                },
+                                "ncmItemAtoConcessorio": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "cnpjBeneficiarioAtoConcessorio": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "quantidadeExportada": {
+                                  "type": "string",
+                                  "example": "0"
+                                }
+                              }
+                            }
+                          },
+                          "tipoCertificado": {
+                            "type": "string",
+                            "example": "0"
+                          },
+                          "certificados": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "codigoCertificado": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "qtUnidadeEstatistica": {
+                                  "type": "string",
+                                  "example": "0"
+                                },
+                                "dataRegistro": {
+                                  "type": "string",
+                                  "example": "2018-04-20T16:13:41.819Z"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "codigo": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "grupo": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "tipo": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "dataRegistro": {
+                      "type": "string",
+                      "example": "2018-04-20T16:13:41.819Z"
+                    }
+                  }
+                }
+              },
+              "listaPaisDestino": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "0"
+                    },
+                    "nome": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "nomeResumido": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "latitudeDoLocalDeEmbarque": {
+          "type": "string",
+          "example": "string"
+        },
+        "longitudeDoLocalDeEmbarque": {
+          "type": "string",
+          "example": "string"
+        },
+        "latitudeDoLocalDeDespacho": {
+          "type": "string",
+          "example": "string"
+        },
+        "longitudeDoLocalDeDespacho": {
+          "type": "string",
+          "example": "string"
+        },
+        "moeda": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "0"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "numero": {
+          "type": "string",
+          "example": "string"
+        },
+        "paisImportador": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "0"
+              },
+              "nome": {
+                "type": "string",
+                "example": "string"
+              },
+              "nomeResumido": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "recintoAduaneiroDeDespacho": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "zona": {
+                "type": "string",
+                "example": "string"
+              },
+              "unidadeLocalRFB": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "coordenada": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "longitude": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "descrição": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "recintoAduaneiroDeEmbarque": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "zona": {
+                "type": "string",
+                "example": "string"
+              },
+              "unidadeLocalRFB": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "codigo": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "descricao": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "coordenada": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "string",
+                      "example": "string"
+                    },
+                    "longitude": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              },
+              "descrição": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "referenciaDoEnderecoDoLocalDeDespacho": {
+          "type": "string",
+          "example": "string"
+        },
+        "referenciaDoEnderecoDoLocalDeEmbarque": {
+          "type": "string",
+          "example": "string"
+        },
+        "ruc": {
+          "type": "string",
+          "example": "string"
+        },
+        "situacao": {
+          "type": "string",
+          "example": "string"
+        },
+        "situacaoDoTratamentoAdministrativo": {
+          "type": "string",
+          "example": "string"
+        },
+        "situacaoEspecial": {
+          "type": "string",
+          "example": "string"
+        },
+        "situacoesDaCarga": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cpfOuCnpjDoResponsavel": {
+                "type": "string",
+                "example": "string"
+              },
+              "urfDeDespacho": {
+                "type": "string",
+                "example": "string"
+              },
+              "recintoAduaneiro": {
+                "type": "string",
+                "example": "string"
+              },
+              "longitude": {
+                "type": "string",
+                "example": "string"
+              },
+              "latitude": {
+                "type": "string",
+                "example": "string"
+              },
+              "codigo": {
+                "type": "string",
+                "example": "0"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              },
+              "cargaOperada": {
+                "type": "string",
+                "example": "false"
+              }
+            }
+          }
+        },
+        "solicitacoes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "0"
+              },
+              "tipoSolicitacao": {
+                "type": "string",
+                "example": "string"
+              },
+              "dataDaSolicitacao": {
+                "type": "string",
+                "example": "2018-04-20T16:13:41.819Z"
+              },
+              "usuarioResponsavel": {
+                "type": "string",
+                "example": "string"
+              },
+              "codigoDoStatusDaSolicitacao": {
+                "type": "string",
+                "example": "0"
+              },
+              "statusDaSolicitacao": {
+                "type": "string",
+                "example": "string"
+              },
+              "dataDeDepreciacao": {
+                "type": "string",
+                "example": "2018-04-20T16:13:41.819Z"
+              },
+              "usuarioQueAnalisou": {
+                "type": "string",
+                "example": "string"
+              },
+              "motivo": {
+                "type": "string",
+                "example": "string"
+              },
+              "numeroDoComprot": {
+                "type": "string",
+                "example": "string"
+              },
+              "motivoDoIndeferimento": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "tipo": {
+          "type": "string",
+          "example": "string"
+        },
+        "tratamentoPrioritario": {
+          "type": "string",
+          "example": "false"
+        },
+        "unidadeLocalDeDespacho": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "unidadeLocalDeEmbarque": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "viaDeTransporteEspecial": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "responsavelPeloACD": {
+          "type": "string",
+          "example": "string"
+        },
+        "motivoDeDispensaDaNotaFiscal": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string",
+                "example": "string"
+              },
+              "descricao": {
+                "type": "string",
+                "example": "string"
+              }
+            }
+          }
+        },
+        "justificativaDeDispensaDaNotaFiscal": {
+          "type": "string",
+          "example": "string"
+        },
+        "despachoEmRecintoDomiciliar": {
+          "type": "string",
+          "example": "false"
+        },
+        "dataDoCCE": {
+          "type": "string",
+          "example": "2018-04-20T16:13:41.820Z"
+        },
+        "dataDeCriacao": {
+          "type": "string",
+          "example": "2018-04-20T16:13:41.820Z"
+        },
+        "dat": {
+          "type": "string",
+          "example": "false"
+        },
+        "oea": {
+          "type": "string",
+          "example": "false"
+        }
+      }
+    }
+  }
+}
