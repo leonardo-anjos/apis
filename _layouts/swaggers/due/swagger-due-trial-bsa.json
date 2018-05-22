@@ -28,7 +28,7 @@
     "version": "1",
     "title": "API DUE"
   },
-  "basePath": "/api-consulta-due/api",
+  "basePath": "/api-consulta-due-trial/api",
   "paths": {
     "Descrição": {
       "head": {
