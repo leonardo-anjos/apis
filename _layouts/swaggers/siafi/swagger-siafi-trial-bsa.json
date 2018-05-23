@@ -563,8 +563,9 @@
         "numeroEmpenhoReferencia": {
           "type": "string"
         },
-        "listaItems": {
-          "type": "string"
+        "listaItens": {
+            "$ref": "#/definitions/listaItens"
+          }
         },
         "numeroTransacaoCliente": {
           "type": "string"
@@ -630,8 +631,9 @@
         "numeroEmpenhoReferencia": {
           "type": "string"
         },
-        "listaItems": {
-          "type": "string"
+        "listaItens": {
+            "$ref": "#/definitions/listaItens"
+          }
         },
         "numeroTransacaoCliente": {
           "type": "string"
@@ -849,6 +851,22 @@
           }
         },
         "nsaldo": {
+          "type": "string"
+        }
+      }
+    },
+    "listaItens": {
+      "properties": {
+        "subItemNd": {
+          "type": "string"
+        },
+        "quantidade": {
+          "type": "string"
+        },
+        "valorUnitario": {
+          "type": "string"
+        },
+        "descricao": {
           "type": "string"
         }
       }
