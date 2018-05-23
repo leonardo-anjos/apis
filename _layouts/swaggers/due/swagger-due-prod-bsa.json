@@ -458,7 +458,7 @@
             "properties": {
               "dataEHoraDoEvento": {
                 "type": "string",
-                "example": "2018-05-02T07:07:47.002+0000"
+                "example": "2018-04-27T11:17:58.689+0000"
               },
               "evento": {
                 "type": "string",
@@ -466,7 +466,7 @@
               },
               "responsavel": {
                 "type": "string",
-                "example": "07073311703"
+                "example": "69211221749"
               },
               "informacoesAdicionais": {
                 "type": "string",
