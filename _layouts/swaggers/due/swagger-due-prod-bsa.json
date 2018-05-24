@@ -26,7 +26,8 @@
   ],
   "info": {
     "version": "1",
-    "title": "API DUE"
+    "title": "API DUE",
+    "description": "\nPara informações de como se autenticar antes de consumir as API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n  "
   },
   "basePath": "/api-consulta-due/api",
   "paths": {
