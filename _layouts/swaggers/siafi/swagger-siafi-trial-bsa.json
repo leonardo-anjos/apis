@@ -630,7 +630,7 @@
         "numeroEmpenhoReferencia": {
           "type": "string"
         },
-        "listaItems": {
+        "listaItens": {
           "$ref": "#/definitions/listaItens"
         },
         "numeroTransacaoCliente": {
