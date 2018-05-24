@@ -854,8 +854,107 @@
     },
     "ReforcaNE": {
       "properties": {
-        "variaveis": {
+        "dataEmissao": {
           "type": "string"
+        },
+        "numeroDocumento": {
+          "type": "string"
+        },
+        "ugEmitente": {
+          "type": "string"
+        },
+        "gestaoEmitente": {
+          "type": "string"
+        },
+        "numeroLista": {
+          "type": "string"
+        },
+        "taxaCambio": {
+          "type": "string"
+        },
+        "observacao": {
+          "type": "string"
+        },
+        "valorTotalEmpenho": {
+          "type": "string"
+        },
+        "numeroProcesso": {
+          "type": "string"
+        },
+        "numeroOriginalConvenio": {
+          "type": "string"
+        },
+        "passivoAnterior": {
+          "type": "string"
+        },
+        "contaPassivo": {
+          "type": "string"
+        },
+        "contaValor": {
+          "type": "object",
+          "properties": {
+            "conta": {
+              "type": "string"
+            },
+            "valor": {
+              "type": "string"
+            }
+          }
+        },
+        "contaPassivoFinanceiro": {
+          "type": "string"
+        },
+        "especie": {
+          "type": "string"
+        },
+        "ugReferencia": {
+          "type": "string"
+        },
+        "gestaoReferencia": {
+          "type": "string"
+        },
+        "numeroEmpenhoReferencia": {
+          "type": "string"
+        },
+        "numeroListaReferencia": {
+          "type": "string"
+        },
+        "listaItens": {
+          "type": "object",
+          "properties": {
+            "subItemNd": {
+              "type": "string"
+            },
+            "quantidade": {
+              "type": "string"
+            },
+            "valorUnitario": {
+              "type": "string"
+            },
+            "valorTotal": {
+              "type": "string"
+            },
+            "descricao": {
+              "type": "string"
+            }
+          }
+        },
+        "numeroTransacaoCliente": {
+          "type": "string"
+        },
+        "credencial": {
+          "type": "object",
+          "properties": {
+            "cpf": {
+              "type": "string"
+            },
+            "ug": {
+              "type": "string"
+            },
+            "sistema": {
+              "type": "string"
+            }
+          }
         }
       }
     },
