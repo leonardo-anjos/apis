@@ -643,8 +643,22 @@
     },
     "ConsultaTransacao": {
       "properties": {
-        "variaveis": {
+        "numeroTransacaoCliente": {
           "type": "string"
+        },
+        "credencial": {
+          "type": "object",
+          "properties": {
+            "cpf": {
+              "type": "string"
+            },
+            "ug": {
+              "type": "string"
+            },
+            "sistema": {
+              "type": "string"
+            }
+          }
         }
       }
     },
