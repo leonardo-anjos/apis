@@ -507,7 +507,6 @@
         }
       }
     },
-    
     "AlteraNE": {
       "properties": {
         "dataEmissao": {
@@ -565,7 +564,7 @@
           "type": "string"
         },
         "listaItems": {
-          "type": "string"
+          "$ref": "#/definitions/listaItens"
         },
         "numeroTransacaoCliente": {
           "type": "string"
@@ -575,7 +574,6 @@
         }
       }
     },
-    
     "AnulaNE": {
       "properties": {
         "dataEmissao": {
@@ -633,7 +631,7 @@
           "type": "string"
         },
         "listaItems": {
-          "type": "string"
+          "$ref": "#/definitions/listaItens"
         },
         "numeroTransacaoCliente": {
           "type": "string"
@@ -851,6 +849,22 @@
           }
         },
         "nsaldo": {
+          "type": "string"
+        }
+      }
+    },
+    "listaItens": {
+      "properties": {
+        "subItemNd": {
+          "type": "string"
+        },
+        "quantidade": {
+          "type": "string"
+        },
+        "valorUnitario": {
+          "type": "string"
+        },
+        "descricao": {
           "type": "string"
         }
       }
