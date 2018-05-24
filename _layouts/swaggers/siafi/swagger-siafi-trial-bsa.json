@@ -694,8 +694,161 @@
     },
     "RealizaNE": {
       "properties": {
-        "variaveis": {
+        "dataEmissao": {
           "type": "string"
+        },
+        "numeroDocumento": {
+          "type": "string"
+        },
+        "ugEmitente": {
+          "type": "string"
+        },
+        "gestaoEmitente": {
+          "type": "string"
+        },
+        "numeroLista": {
+          "type": "string"
+        },
+        "taxaCambio": {
+          "type": "string"
+        },
+        "observacao": {
+          "type": "string"
+        },
+        "valorTotalEmpenho": {
+          "type": "string"
+        },
+        "numeroProcesso": {
+          "type": "string"
+        },
+        "numeroOriginalConvenio": {
+          "type": "string"
+        },
+        "passivoAnterior": {
+          "type": "string"
+        },
+        "contaPassivo": {
+          "type": "string"
+        },
+        "contaValor": {
+          "type": "object",
+          "properties": {
+            "conta": {
+              "type": "string"
+            },
+            "valor": {
+              "type": "string"
+            }
+          }
+        },
+        "contaPassivoFinanceiro": {
+          "type": "string"
+        },
+        "favorecido": {
+          "type": "string"
+        },
+        "gestaoFavorecido": {
+          "type": "string"
+        },
+        "esferaOrcamentaria": {
+          "type": "string"
+        },
+        "codigoUO": {
+          "type": "string"
+        },
+        "codigoProgramaTrabalho": {
+          "type": "string"
+        },
+        "fonteRecursos": {
+          "type": "string"
+        },
+        "naturezaDespesa": {
+          "type": "string"
+        },
+        "unidadeGestoraResponsavel": {
+          "type": "string"
+        },
+        "planoInterno": {
+          "type": "string"
+        },
+        "indicadorResultado": {
+          "type": "string"
+        },
+        "indicadorTipoCredito": {
+          "type": "string"
+        },
+        "planoOrcamentario": {
+          "type": "string"
+        },
+        "codigoAutorEmenda": {
+          "type": "string"
+        },
+        "tipoEmpenho": {
+          "type": "string"
+        },
+        "modalidadeLicitacao": {
+          "type": "string"
+        },
+        "amparoLegal": {
+          "type": "string"
+        },
+        "inciso": {
+          "type": "string"
+        },
+        "origemMaterial": {
+          "type": "string"
+        },
+        "municipioBeneficiado": {
+          "type": "string"
+        },
+        "ufBeneficiada": {
+          "type": "string"
+        },
+        "dataVencimento": {
+          "type": "string"
+        },
+        "dataRecebimento": {
+          "type": "string"
+        },
+        "valorCompromisso": {
+          "type": "string"
+        },
+        "listaItens": {
+          "type": "object",
+          "properties": {
+            "subItemNd": {
+              "type": "string"
+            },
+            "quantidade": {
+              "type": "string"
+            },
+            "valorUnitario": {
+              "type": "string"
+            },
+            "valorTotal": {
+              "type": "string"
+            },
+            "descricao": {
+              "type": "string"
+            }
+          }
+        },
+        "numeroTransacaoCliente": {
+          "type": "string"
+        },
+        "credencial": {
+          "type": "object",
+          "properties": {
+            "cpf": {
+              "type": "string"
+            },
+            "ug": {
+              "type": "string"
+            },
+            "sistema": {
+              "type": "string"
+            }
+          }
         }
       }
     },
