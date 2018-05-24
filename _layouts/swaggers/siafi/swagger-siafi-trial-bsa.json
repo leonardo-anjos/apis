@@ -507,76 +507,8 @@
         }
       }
     },
-    "AlteraNE": {
-      "properties": {
-        "dataEmissao": {
-          "type": "string"
-        },
-        "numeroDocumento": {
-          "type": "string"
-        },
-        "ugEmitente": {
-          "type": "string"
-        },
-        "gestaoEmitente": {
-          "type": "string"
-        },
-        "numeroLista": {
-          "type": "string"
-        },
-        "taxaCambio": {
-          "type": "string"
-        },
-        "observacao": {
-          "type": "string"
-        },
-        "valorTotalEmpenho": {
-          "type": "string"
-        },
-        "numeroProcesso": {
-          "type": "string"
-        },
-        "numeroOriginalConvenio": {
-          "type": "string"
-        },
-        "passivoAnterior": {
-          "type": "string"
-        },
-        "contaPassivo": {
-          "type": "string"
-        },
-        "contaValor": {
-          "$ref": "#/definitions/Conta"
-        },
-        "contaPassivoFinanceiro": {
-          "type": "string"
-        },
-        "especie": {
-          "type": "string"
-        },
-        "ugReferencia": {
-          "type": "string"
-        },
-        "gestaoReferencia": {
-          "type": "string"
-        },
-        "numeroEmpenhoReferencia": {
-          "type": "string"
-        },
-        "listaItens": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/listaItens"
-          }
-        },
-        "numeroTransacaoCliente": {
-          "type": "string"
-        },
-        "credencial": {
-          "$ref": "#/definitions/Credencial"
-        }
-      }
-    },
+    
+    
     "AnulaNE": {
       "properties": {
         "dataEmissao": {
