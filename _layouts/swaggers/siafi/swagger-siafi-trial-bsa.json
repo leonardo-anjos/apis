@@ -413,13 +413,10 @@
   "definitions": {
     "NotaCredito": {
       "properties": {
-        "tipoRegistro": {
-          "type": "string"
-        },
         "dataEmissao": {
           "type": "string"
         },
-        "numeroLancamento": {
+        "numero": {
           "type": "string"
         },
         "ugEmitente": {
@@ -428,13 +425,19 @@
         "gestaoEmitente": {
           "type": "string"
         },
-        "opCambial": {
+        "ugFavorecida": {
+          "type": "string"
+        },
+        "gestaoFavorecida": {
+          "type": "string"
+        },
+        "taxaCambio": {
           "type": "string"
         },
         "numeroTransferencia": {
           "type": "string"
         },
-        "espacoBranco": {
+        "observacao": {
           "type": "string"
         },
         "listaEventos": {
@@ -442,12 +445,6 @@
           "items": {
             "$ref": "#/definitions/EventoNC"
           }
-        },
-        "numeroTransacaoCliente": {
-          "type": "string"
-        },
-        "codigoCliente": {
-          "type": "string"
         }
       }
     },
@@ -481,19 +478,7 @@
         "unidadeOrcamentaria": {
           "type": "string"
         },
-        "programaTrabalho": {
-          "type": "string"
-        },
-        "resultado": {
-          "type": "string"
-        },
-        "tipoCredito": {
-          "type": "string"
-        },
-        "planoOrcamentario": {
-          "type": "string"
-        },
-        "autorEmenda": {
+        "ptres": {
           "type": "string"
         },
         "fonteRecurso": {
@@ -511,7 +496,7 @@
         "planoInterno": {
           "type": "string"
         },
-        "valorTransacao": {
+        "valor": {
           "type": "string"
         }
       }
