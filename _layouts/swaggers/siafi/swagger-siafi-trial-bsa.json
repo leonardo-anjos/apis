@@ -389,7 +389,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Nota de Crédito gerada com sucesso"
+            "description": "Nota de Crédito gerada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/GeraNC"
+            }
           },
           "400": {
             "description": "Algum campo possui informações inválidas"
@@ -444,6 +447,25 @@
           "type": "string"
         },
         "codigoCliente": {
+          "type": "string"
+        }
+      }
+    },
+    "GeraNC": {
+      "properties": {
+        "ug": {
+          "type": "string"
+        },
+        "gestao": {
+          "type": "string"
+        },
+        "ano": {
+          "type": "string"
+        },
+        "tipoDoc": {
+          "type": "string"
+        },
+        "sequencialDoc": {
           "type": "string"
         }
       }
