@@ -26,7 +26,7 @@
             "name": "3 Referência da API"
         }
     ],
-    "basePath": "/api/v1",
+    "basePath": "/v1",
     "paths": {
         "O que é o Lince": {
             "head": {
