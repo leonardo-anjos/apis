@@ -5,7 +5,7 @@
       "Bearer": []
     }
   ],
-  "securityDefinitions": {
+  "securityDefinitions": {  
     "Bearer": {
       "type": "apiKey",
       "name": "Authorization",
