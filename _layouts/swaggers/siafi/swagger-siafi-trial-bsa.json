@@ -5,7 +5,7 @@
       "Bearer": []
     }
   ],
-  "securityDefinitions": {
+  "securityDefinitions": {  
     "Bearer": {
       "type": "apiKey",
       "name": "Authorization",
@@ -339,7 +339,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Nota de Crédito encontrada e retornada"
+            "description": "Nota de Crédito encontrada e retornada",
+            "schema": {
+              "$ref": "#/definitions/GeraNC"
+            }
           },
           "400": {
             "description": "Algum campo possui informações inválidas"
@@ -389,7 +392,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Nota de Crédito gerada com sucesso"
+            "description": "Nota de Crédito gerada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/NCGerada"
+            }
           },
           "400": {
             "description": "Algum campo possui informações inválidas"
@@ -410,13 +416,10 @@
   "definitions": {
     "NotaCredito": {
       "properties": {
-        "tipoRegistro": {
-          "type": "string"
-        },
         "dataEmissao": {
           "type": "string"
         },
-        "numeroLancamento": {
+        "numero": {
           "type": "string"
         },
         "ugEmitente": {
@@ -425,13 +428,19 @@
         "gestaoEmitente": {
           "type": "string"
         },
-        "opCambial": {
+        "ugFavorecida": {
+          "type": "string"
+        },
+        "gestaoFavorecida": {
+          "type": "string"
+        },
+        "taxaCambio": {
           "type": "string"
         },
         "numeroTransferencia": {
           "type": "string"
         },
-        "espacoBranco": {
+        "observacao": {
           "type": "string"
         },
         "listaEventos": {
@@ -439,11 +448,61 @@
           "items": {
             "$ref": "#/definitions/EventoNC"
           }
-        },
-        "numeroTransacaoCliente": {
+        }
+      }
+    },
+    "GeraNC": {
+      "properties": {
+        "dataEmissao": {
           "type": "string"
         },
-        "codigoCliente": {
+        "numero": {
+          "type": "string"
+        },
+        "ugEmitente": {
+          "type": "string"
+        },
+        "gestaoEmitente": {
+          "type": "string"
+        },
+        "ugFavorecida": {
+          "type": "string"
+        },
+        "gestaoFavorecida": {
+          "type": "string"
+        },
+        "taxaCambio": {
+          "type": "string"
+        },
+        "numeroTransferencia": {
+          "type": "string"
+        },
+        "observacao": {
+          "type": "string"
+        },
+        "listaEventos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventoNC"
+          }
+        }
+      }
+    },
+    "NCGerada": {
+      "properties": {
+        "ug": {
+          "type": "string"
+        },
+        "gestao": {
+          "type": "string"
+        },
+        "ano": {
+          "type": "string"
+        },
+        "tipoDoc": {
+          "type": "string"
+        },
+        "sequencialDoc": {
           "type": "string"
         }
       }
@@ -456,22 +515,7 @@
         "esferaOrcamentaria": {
           "type": "string"
         },
-        "unidadeOrcamentaria": {
-          "type": "string"
-        },
-        "programaTrabalho": {
-          "type": "string"
-        },
-        "resultado": {
-          "type": "string"
-        },
-        "tipoCredito": {
-          "type": "string"
-        },
-        "planoOrcamentario": {
-          "type": "string"
-        },
-        "autorEmenda": {
+        "ptres": {
           "type": "string"
         },
         "fonteRecurso": {
@@ -489,7 +533,7 @@
         "planoInterno": {
           "type": "string"
         },
-        "valorTransacao": {
+        "valor": {
           "type": "string"
         }
       }
