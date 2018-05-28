@@ -339,7 +339,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Nota de Crédito encontrada e retornada"
+            "description": "Nota de Crédito encontrada e retornada",
+            "schema": {
+              "$ref": "#/definitions/GeraNC"
+            }
           },
           "400": {
             "description": "Algum campo possui informações inválidas"
@@ -391,7 +394,7 @@
           "201": {
             "description": "Nota de Crédito gerada com sucesso",
             "schema": {
-              "$ref": "#/definitions/GeraNC"
+              "$ref": "#/definitions/NCGerada"
             }
           },
           "400": {
@@ -449,6 +452,43 @@
       }
     },
     "GeraNC": {
+      "properties": {
+        "dataEmissao": {
+          "type": "string"
+        },
+        "numero": {
+          "type": "string"
+        },
+        "ugEmitente": {
+          "type": "string"
+        },
+        "gestaoEmitente": {
+          "type": "string"
+        },
+        "ugFavorecida": {
+          "type": "string"
+        },
+        "gestaoFavorecida": {
+          "type": "string"
+        },
+        "taxaCambio": {
+          "type": "string"
+        },
+        "numeroTransferencia": {
+          "type": "string"
+        },
+        "observacao": {
+          "type": "string"
+        },
+        "listaEventos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EventoNC"
+          }
+        }
+      }
+    },
+    "NCGerada": {
       "properties": {
         "ug": {
           "type": "string"
