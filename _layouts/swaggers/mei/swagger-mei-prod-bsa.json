@@ -44,7 +44,8 @@
             "schema": {
               "$ref": "#/definitions/AlteraNE"
             }
-          },
+           }
+          ],  
     "/mei/consultarCertificados": {
       "post": {
         "tags": [
@@ -69,7 +70,8 @@
             "schema": {
               "$ref": "#/definitions/AlteraNE"
             }
-          },
+           }
+          ],
     "/mei/consultarCertificadoEspecifico": {
       "post": {
         "tags": [
