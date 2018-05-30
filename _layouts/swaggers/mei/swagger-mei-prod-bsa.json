@@ -42,7 +42,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AlteraNE"
+              "$ref": "#/definitions/NotaCredito"
             }
           }
         ],
@@ -50,7 +50,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/NE"
+              "$ref": "#/definitions/Conta"
             }
           },
           "400": {
@@ -87,7 +87,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AlteraNE"
+              "$ref": "#/definitions/NotaCredito"
             }
           }
         ],
@@ -95,7 +95,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/NE"
+              "$ref": "#/definitions/Conta"
             }
           },
           "400": {
@@ -132,7 +132,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AlteraNE"
+              "$ref": "#/definitions/NotaCredito"
             }
           }
         ],
@@ -140,7 +140,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/NE"
+              "$ref": "#/definitions/Conta"
             }
           },
           "400": {
@@ -188,12 +188,6 @@
         },
         "observacao": {
           "type": "string"
-        },
-        "listaEventos": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EventoNC"
-          }
         }
       }
     },
