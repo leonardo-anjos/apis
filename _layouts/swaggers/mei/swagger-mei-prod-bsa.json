@@ -45,7 +45,26 @@
               "$ref": "#/definitions/AlteraNE"
             }
            }
-          ],  
+          ],
+          "responses": {
+            "200": {
+              "description": "Retorna os dados da Nota de Empenho Alterada",
+              "schema": {
+                "$ref": "#/definitions/NE"
+            }
+          },
+          "400": {
+            "description": "Algum campo enviado é inválido"
+          },
+          "403": {
+            "description": "Usuário não tem permissão para realizar esta operação"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    },      
     "/mei/consultarCertificados": {
       "post": {
         "tags": [
@@ -72,6 +91,25 @@
             }
            }
           ],
+          "responses": {
+          "200": {
+            "description": "Retorna os dados da Nota de Empenho Alterada",
+            "schema": {
+              "$ref": "#/definitions/NE"
+            }
+          },
+          "400": {
+            "description": "Algum campo enviado é inválido"
+          },
+          "403": {
+            "description": "Usuário não tem permissão para realizar esta operação"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    },
     "/mei/consultarCertificadoEspecifico": {
       "post": {
         "tags": [
