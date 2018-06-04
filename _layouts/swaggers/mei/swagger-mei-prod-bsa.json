@@ -1,305 +1,254 @@
-host: apigateway.serpro.serpro.gov.br
-security:
-  - Bearer: []
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-swagger: '2.0'
-info:
-  version: 1.0.0
-  title: API do Microempreendedor (api-mei)
-  description: |-
-
-    Para informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf
-
-        
-    A api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.
-    ## Códigos de Retorno comuns
-    | Código de retorno | Resumido | Explicação |
-    | ------------- |:--------------------|:-----------------------------------------------------------------------------|
-    | 200           | OK                  | Tudo funcionou como esperado e a operação foi realizada com sucesso                                               |
-    | 400           | Requisição inválida | Alguma(s) informação(ões) enviadas não são válidas para a operação especificada. |
-    | 403           | Não encontrado      | O usuário especificado não tem permissão para executar a operação especificada |
-    | 500           | Erro no servidor    | Ocorreu algum erro interno.      |
-
-    ## Endereço de Produção
-        https://gateway.apiserpro.serpro.gov.br/api-mei/v1/
-        
-    ## Endereço de Degustação
-        https://gateway.apiserpro.serpro.gov.br/api-mei-trial/v1/
-        
-basePath: /api-consulta-mei/v1
-paths:
-  /mei/listarCNPJs:
-    get:
-      tags:
-        - MEI
-      summary: Listar os CNPJs de um CPF
-      x-auth-type: Application & Application User
-      x-throttling-tier: Unlimited
-      description: |-
-
-        ## Exemplo
-        #### Chamada
-              [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/listarCNPJs/cpf
-        #### Parâmetros de Entrada
-            {
-              "CPF": "71066868409" }
-        #### Retorno
-            { 
-              "cnpj": "22025711000153",
-              "situacao": "SUSPENSO"
+{
+  "host": "apigateway.serpro.serpro.gov.br",
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API do Microempreendedor (api-mei)",
+    "description": "\nPara informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n\n    \nA api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.\n## Códigos de Retorno comuns\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Tudo funcionou como esperado e a operação foi realizada com sucesso                                               |\n| 400           | Requisição inválida | Alguma(s) informação(ões) enviadas não são válidas para a operação especificada. |\n| 403           | Não encontrado      | O usuário especificado não tem permissão para executar a operação especificada |\n| 500           | Erro no servidor    | Ocorreu algum erro interno.      |\n\n## Endereço de Produção\n    https://gateway.apiserpro.serpro.gov.br/api-mei/v1/\n    \n## Endereço de Degustação\n    https://gateway.apiserpro.serpro.gov.br/api-mei-trial/v1/\n    "
+  },
+  "basePath": "/api-consulta-mei/v1",
+  "paths": {
+    "/mei/listarCNPJs": {
+      "get": {
+        "tags": [
+          "MEI"
+        ],
+        "summary": "Listar os CNPJs de um CPF",
+        "x-auth-type": "Application & Application User",
+        "x-throttling-tier": "Unlimited",
+        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/listarCNPJs/cpf\n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\" }\n#### Retorno\n    { \n      \"cnpj\": \"22025711000153\",\n      \"situacao\": \"SUSPENSO\"\n    }",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna os dados da Nota de Empenho Alterada",
+            "schema": {
+              "$ref": "#/definitions/CNPJs"
             }
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Retorna os dados da Nota de Empenho Alterada
-          schema:
-            $ref: '#/definitions/CNPJs'
-        '400':
-          description: Algum campo enviado é inválido
-        '403':
-          description: Usuário não tem permissão para realizar esta operação
-        '500':
-          description: Erro interno da API
-  /mei/consultarCertificados:
-    get:
-      tags:
-        - MEI
-      summary: Consultar Certificados de um CPF
-      x-auth-type: Application & Application User
-      x-throttling-tier: Unlimited
-      description: |-
-
-        ## Exemplo
-        #### Chamada
-              [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf   (traz todos os CNPJs) 
-
-              [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf?ativo=true (traz apenas os CNPJs ativos) 
-        #### Parâmetros de Entrada
-            {
-              "CPF": "71066868409"
-            }      
-        #### Retorno
-            {
-              "nomeEmpresarial": "HE 80454348053",
-              "nomeEmpresario": "HE",               
-              "nomeFantasia": "@2",
-              "capitalSocial": 1,
-              "identidade": {
-                "numero": "",
-                "orgaoEmissor": "",
-                "ufEmissor": "",
-                "cpf": "80454348053"
-              },
-              "situacaoCadastral": "ATIVO",
-              "dataSituacaoCadastral": "2011-01-23",
-              "cnpj": "13143379000130",
-              "nire": "35801597535",
-              "enderecoComercial": {
-                "cep": "18143040",
-                "logradouro": "RUA DGQS PWVCHGU PWQDWUAGQ",
-                "numero": "275",
-                "bairro": "CENTRO (MAILASQUI)",
-                "municipio": {
-                  "codigo": 7113,
-                  "nome": "SAO ROQUE"
+          },
+          "400": {
+            "description": "Algum campo enviado é inválido"
+          },
+          "403": {
+            "description": "Usuário não tem permissão para realizar esta operação"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    },
+    "/mei/consultarCertificados": {
+      "get": {
+        "tags": [
+          "MEI"
+        ],
+        "summary": "Consultar Certificados de um CPF",
+        "x-auth-type": "Application & Application User",
+        "x-throttling-tier": "Unlimited",
+        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf   (traz todos os CNPJs) \n\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf?ativo=true (traz apenas os CNPJs ativos) \n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\"\n    }      \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"HE 80454348053\",\n      \"nomeEmpresario\": \"HE\",               \n      \"nomeFantasia\": \"@2\",\n      \"capitalSocial\": 1,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"18143040\",\n        \"logradouro\": \"RUA DGQS PWVCHGU PWQDWUAGQ\",\n        \"numero\": \"275\",\n        \"bairro\": \"CENTRO (MAILASQUI)\",\n        \"municipio\": {\n          \"codigo\": 7113,\n          \"nome\": \"SAO ROQUE\"\n        },\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"codigo\": \"\",\n        \"cna\": \"4330499\"\n      },\n      \"ocupacoesSecundarias\": {\n        \"codigo\": \"\",\n        \"cna\": \"5874695\"\n      },\n      \"numeroRecibo\": \"\",\n      \"numeroIdentificador\": \"\",\n      \"dataEmissao\": \"2018-05-19\"\n    }",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna os dados da Nota de Empenho Alterada",
+            "schema": {
+              "$ref": "#/definitions/dadosCNPJs"
+            }
+          },
+          "400": {
+            "description": "Algum campo enviado é inválido"
+          },
+          "403": {
+            "description": "Usuário não tem permissão para realizar esta operação"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    },
+    "/mei/consultarCertificadoEspecifico": {
+      "get": {
+        "tags": [
+          "MEI"
+        ],
+        "summary": "Consultar Certificado Específico de um CPF",
+        "x-auth-type": "Application & Application User",
+        "x-throttling-tier": "Unlimited",
+        "description": "\n## Exemplo\n#### Chamada\n      [POST] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificadoEspecifico/cpf/cnpj\n#### Parânetris de Entrada\n    {\n      \"CPF\": \"71066868409\",\n      \"CNPJ\": \"22025711000153\"\n    \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"HE 80454348053\",\n      \"nomeEmpresario\": \"HE\",               \n      \"nomeFantasia\": \"@2\",\n      \"capitalSocial\": 1,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"18143040\",\n        \"logradouro\": \"RUA DGQS PWVCHGU PWQDWUAGQ\",\n        \"numero\": \"275\",\n        \"bairro\": \"CENTRO (MAILASQUI)\",\n        \"municipio\": {\n          \"codigo\": 7113,\n          \"nome\": \"SAO ROQUE\"\n        },\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"codigo\": \"\",\n        \"cna\": \"4330499\"\n      },\n      \"ocupacoesSecundarias\": {\n        \"codigo\": \"\",\n        \"cna\": \"5874695\"\n      },\n      \"numeroRecibo\": \"\",\n      \"numeroIdentificador\": \"\",\n      \"dataEmissao\": \"2018-05-19\"\n    }",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna os dados da Nota de Empenho Alterada",
+            "schema": {
+              "$ref": "#/definitions/dadosCNPJs"
+            }
+          },
+          "400": {
+            "description": "Algum campo enviado é inválido"
+          },
+          "403": {
+            "description": "Usuário não tem permissão para realizar esta operação"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "definitions": {
+    "CNPJs": {
+      "properties": {
+        "cnpj": {
+          "type": "string"
+        },
+        "situacao": {
+          "type": "string"
+        }
+      }
+    },
+    "dadosCNPJs": {
+      "properties": {
+        "nomeEmpresarial": {
+          "type": "string"
+        },
+        "nomeEmpresario": {
+          "type": "string"
+        },
+        "nomeFantasia": {
+          "type": "string"
+        },
+        "capitalSocial": {
+          "type": "string"
+        },
+        "identidade": {
+          "type": "object",
+          "properties": {
+            "numero": {
+              "type": "string"
+            },
+            "orgaoEmissor": {
+              "type": "string"
+            },
+            "ufEmissor": {
+              "type": "string"
+            },
+            "cpf": {
+              "type": "string"
+            }
+          }
+        },
+        "situacaoCadastral": {
+          "type": "string"
+        },
+        "dataSituacaoCadastral": {
+          "type": "string"
+        },
+        "cnpj": {
+          "type": "string"
+        },
+        "nire": {
+          "type": "string"
+        },
+        "enderecoComercial": {
+          "type": "object",
+          "properties": {
+            "cep": {
+              "type": "string"
+            },
+            "logradouro": {
+              "type": "string"
+            },
+            "numero": {
+              "type": "string"
+            },
+            "bairro": {
+              "type": "string"
+            },
+            "municipio": {
+              "type": "object",
+              "properties": {
+                "codigo": {
+                  "type": "string"
                 },
-                "uf": "SP"
-              },
-              "dataInicioAtividades": "2011-01-23",
-              "formaAtuacao": [
-                "Estabelecimento Fixo"
-                ],
-              "ocupacaoPrincipal": {
-                "codigo": "",
-                "cna": "4330499"
-              },
-              "ocupacoesSecundarias": {
-                "codigo": "",
-                "cna": "5874695"
-              },
-              "numeroRecibo": "",
-              "numeroIdentificador": "",
-              "dataEmissao": "2018-05-19"
+                "nome": {
+                  "type": "string"
+                }
+              }
+            },
+            "uf": {
+              "type": "string"
             }
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Retorna os dados da Nota de Empenho Alterada
-          schema:
-            $ref: '#/definitions/dadosCNPJs'
-        '400':
-          description: Algum campo enviado é inválido
-        '403':
-          description: Usuário não tem permissão para realizar esta operação
-        '500':
-          description: Erro interno da API
-  /mei/consultarCertificadoEspecifico:
-    get:
-      tags:
-        - MEI
-      summary: Consultar Certificado Específico de um CPF
-      x-auth-type: Application & Application User
-      x-throttling-tier: Unlimited
-      description: |-
-
-        ## Exemplo
-        #### Chamada
-              [POST] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificadoEspecifico/cpf/cnpj
-        #### Parânetris de Entrada
-            {
-              "CPF": "71066868409",
-              "CNPJ": "22025711000153"
-            
-        #### Retorno
-            {
-              "nomeEmpresarial": "HE 80454348053",
-              "nomeEmpresario": "HE",               
-              "nomeFantasia": "@2",
-              "capitalSocial": 1,
-              "identidade": {
-                "numero": "",
-                "orgaoEmissor": "",
-                "ufEmissor": "",
-                "cpf": "80454348053"
-              },
-              "situacaoCadastral": "ATIVO",
-              "dataSituacaoCadastral": "2011-01-23",
-              "cnpj": "13143379000130",
-              "nire": "35801597535",
-              "enderecoComercial": {
-                "cep": "18143040",
-                "logradouro": "RUA DGQS PWVCHGU PWQDWUAGQ",
-                "numero": "275",
-                "bairro": "CENTRO (MAILASQUI)",
-                "municipio": {
-                  "codigo": 7113,
-                  "nome": "SAO ROQUE"
-                },
-                "uf": "SP"
-              },
-              "dataInicioAtividades": "2011-01-23",
-              "formaAtuacao": [
-                "Estabelecimento Fixo"
-                ],
-              "ocupacaoPrincipal": {
-                "codigo": "",
-                "cna": "4330499"
-              },
-              "ocupacoesSecundarias": {
-                "codigo": "",
-                "cna": "5874695"
-              },
-              "numeroRecibo": "",
-              "numeroIdentificador": "",
-              "dataEmissao": "2018-05-19"
+          }
+        },
+        "dataInicioAtividades": {
+          "type": "string"
+        },
+        "formaAtuacao": {
+          "type": "string"
+        },
+        "ocupacaoPrincipal": {
+          "type": "object",
+          "properties": {
+            "codigo": {
+              "type": "string"
+            },
+            "cna": {
+              "type": "string"
             }
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: Retorna os dados da Nota de Empenho Alterada
-          schema:
-            $ref: '#/definitions/dadosCNPJs'
-        '400':
-          description: Algum campo enviado é inválido
-        '403':
-          description: Usuário não tem permissão para realizar esta operação
-        '500':
-          description: Erro interno da API
-schemes:
-  - https
-definitions:
-  CNPJs:
-    properties:
-      cnpj:
-        type: string
-      situacao:
-        type: string
-  dadosCNPJs:
-    properties:
-      nomeEmpresarial:
-        type: string
-      nomeEmpresario:
-        type: string
-      nomeFantasia:
-        type: string
-      capitalSocial:
-        type: string
-      identidade:
-        type: object
-        properties:
-          numero:
-            type: string
-          orgaoEmissor:
-            type: string
-          ufEmissor:
-            type: string
-          cpf:
-            type: string
-      situacaoCadastral: 
-        type: string
-      dataSituacaoCadastral: 
-        type: string
-      cnpj: 
-        type: string
-      nire:
-        type: string
-      enderecoComercial:
-        type: object
-        properties:
-          cep:
-            type: string
-          logradouro:
-            type: string  
-          numero:
-            type: string
-          bairro:
-            type: string
-          municipio:
-            type: object
-            properties:
-              codigo: 
-                type: string
-              nome:
-                type: string
-          uf: 
-            type: string
-      dataInicioAtividades: 
-        type: string
-      formaAtuacao: 
-        type: string
-      ocupacaoPrincipal:
-        type: object
-        properties:
-          codigo:
-            type: string
-          cna:
-            type: string
-      ocupacoesSecundarias:
-        type: object
-        properties:
-          codigo:
-            type: string
-          cna:
-            type: string
-      numeroRecibo:
-        type: string
-      numeroIdentificador:
-        type: string
-      dataEmissao: 
-        type: string
-     
-      
-   
+          }
+        },
+        "ocupacoesSecundarias": {
+          "type": "object",
+          "properties": {
+            "codigo": {
+              "type": "string"
+            },
+            "cna": {
+              "type": "string"
+            }
+          }
+        },
+        "numeroRecibo": {
+          "type": "string"
+        },
+        "numeroIdentificador": {
+          "type": "string"
+        },
+        "dataEmissao": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
