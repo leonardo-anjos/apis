@@ -209,7 +209,7 @@
         "formaAtuacao": {
           "type": "object",
           "properties": {
-            "Estabelecimento Fixo": {
+            "EstabelecimentoFixo": {
               "type": "string"
             },
             "Internet": {
