@@ -28,23 +28,12 @@
         "summary": "Listar os CNPJs de um CPF",
         "x-auth-type": "Application & Application User",
         "x-throttling-tier": "Unlimited",
-        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/listarCNPJs/cpf\n\n\n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\" }\n#### Retorno\n    { \n      \"cnpj\": \"22025711000153\",\n      \"situacao\": \"SUSPENSO\"\n    }",
+        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/listarCNPJs/cpf\n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\" }\n#### Retorno\n    { \n      \"cnpj\": \"22025711000153\",\n      \"situacao\": \"SUSPENSO\"\n    }",
         "consumes": [
           "application/json"
         ],
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "description": "Dados dos CNPJs referentes ao CPF",
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/NotaCredito"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -118,7 +107,7 @@
         "summary": "Consultar Certificado Específico de um CPF",
         "x-auth-type": "Application & Application User",
         "x-throttling-tier": "Unlimited",
-        "description": "\n## Exemplo\n#### Chamada\n      [POST] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificadoEspecifico/cpf/cnpj\n#### Parânetris de Entrada\n    {\n      \"CPF\": \"71066868409\",\n      \"CNPJ\": \"22025711000153\"\n    \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"HE 80454348053\",\n      \"nomeEmpresario\": \"HE\",               \n      \"nomeFantasia\": \"@2\",\n      \"capitalSocial\": 1,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"18143040\",\n        \"logradouro\": \"RUA DGQS PWVCHGU PWQDWUAGQ\",\n        \"numero\": \"275\",\n        \"bairro\": \"CENTRO (MAILASQUI)\",\n        \"municipio\": {\n          \"codigo\": 7113,\n          \"nome\": \"SAO ROQUE\"\n        },\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"codigo\": \"\",\n        \"cna\": \"4330499\"\n      },\n      \"ocupacoesSecundarias\": {\n        \"codigo\": \"\",\n        \"cna\": \"5874695\"\n      },\n      \"numeroRecibo\": \"\",\n        \"numeroIdentificador\": \"\",\n        \"dataEmissao\": \"2018-05-19\"\n    }",
+        "description": "\n## Exemplo\n#### Chamada\n      [POST] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificadoEspecifico/cpf/cnpj\n#### Parânetris de Entrada\n    {\n      \"CPF\": \"71066868409\",\n      \"CNPJ\": \"22025711000153\"\n    \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"HE 80454348053\",\n      \"nomeEmpresario\": \"HE\",               \n      \"nomeFantasia\": \"@2\",\n      \"capitalSocial\": 1,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"18143040\",\n        \"logradouro\": \"RUA DGQS PWVCHGU PWQDWUAGQ\",\n        \"numero\": \"275\",\n        \"bairro\": \"CENTRO (MAILASQUI)\",\n        \"municipio\": {\n          \"codigo\": 7113,\n          \"nome\": \"SAO ROQUE\"\n        },\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"codigo\": \"\",\n        \"cna\": \"4330499\"\n      },\n      \"ocupacoesSecundarias\": {\n        \"codigo\": \"\",\n        \"cna\": \"5874695\"\n      },\n      \"numeroRecibo\": \"\",\n      \"numeroIdentificador\": \"\",\n      \"dataEmissao\": \"2018-05-19\"\n    }",
         "consumes": [
           "application/json"
         ],
@@ -140,7 +129,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/Conta"
+              "$ref": "#/definitions/CNPJs"
             }
           },
           "400": {
@@ -191,12 +180,12 @@
         }
       }
     },
-    "Conta": {
+    "CNPJs": {
       "properties": {
-        "conta": {
+        "cnpj": {
           "type": "string"
         },
-        "valor": {
+        "situacao": {
           "type": "string"
         }
       }
