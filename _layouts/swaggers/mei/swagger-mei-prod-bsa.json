@@ -62,7 +62,7 @@
         "summary": "Consultar Certificados de um CPF",
         "x-auth-type": "Application & Application User",
         "x-throttling-tier": "Unlimited",
-        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf   (traz todos os CNPJs) \n\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf?ativo=true (traz apenas os CNPJs ativos) \n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\"\n    }      \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"HE 80454348053\",\n      \"nomeEmpresario\": \"HE\",               \n      \"nomeFantasia\": \"@2\",\n      \"capitalSocial\": 1,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"18143040\",\n        \"logradouro\": \"RUA DGQS PWVCHGU PWQDWUAGQ\",\n        \"numero\": \"275\",\n        \"bairro\": \"CENTRO (MAILASQUI)\",\n        \"municipio\": {\n          \"codigo\": 7113,\n          \"nome\": \"SAO ROQUE\"\n        },\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"codigo\": \"\",\n        \"cna\": \"4330499\"\n      },\n      \"ocupacoesSecundarias\": {\n        \"codigo\": \"\",\n        \"cna\": \"5874695\"\n      },\n      \"numeroRecibo\": \"\",\n      \"numeroIdentificador\": \"\",\n      \"dataEmissao\": \"2018-05-19\"\n    }",
+        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://gateway.apiserpro.serpro.gov.br/api-consulta-mei/v1/consultarCertificados/cpf?ativo=true (traz apenas os CNPJs ativos) \n#### Parâmetros de Entrada\n    {\n      \"CPF\": \"71066868409\"\n    }      \n#### Retorno\n    {\n      \"nomeEmpresarial\": \"MARIA MARIA 21348244844\",\n      \"nomeEmpresario\": \"MARIA MARIA\",               \n      \"nomeFantasia\": \"@2 INSTITUTO DE ENSINO TEOLOGICO BIBLICO DO BRASIL\",\n      \"capitalSocial\": 4500,\n      \"identidade\": {\n        \"numero\": \"\",\n        \"orgaoEmissor\": \"\",\n        \"ufEmissor\": \"\",\n        \"cpf\": \"80454348053\"\n      },\n      \"situacaoCadastral\": \"ATIVO\",\n      \"dataSituacaoCadastral\": \"2011-01-23\",\n      \"cnpj\": \"13143379000130\",\n      \"nire\": \"35801597535\",\n      \"enderecoComercial\": {\n        \"cep\": \"07600000\",\n        \"logradouro\": \"RUA Jandira de lima Camargo\",\n        \"numero\": \"515\",\n        \"bairro\": \"Colina 2\",\n        \"municipio\": \"MAIRIPORA\"\n        \"uf\": \"SP\"\n      },\n      \"dataInicioAtividades\": \"2011-01-23\",\n      \"formaAtuacao\": [\n        \"Estabelecimento Fixo\",\n        \"Internet\",\n        \"Correio\"\n        ],\n      \"ocupacaoPrincipal\": {\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 8599604,\n          \"descricao\": \"Treinamento em desenvolvimento profissional e gerencial\"\n        }\n      },\n      \"ocupacoesSecundarias\": {\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 8599605,\n          \"descricao\": \"Cursos preparatórios para concursos\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 4789099,\n          \"descricao\": \"Comércio varejista de outros produtos Não especificados anteriormente\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 4762800,\n          \"descricao\": \"Comércio varejista de discos, CDs, DVDs e fitas\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 5811500,\n          \"descricao\": \"Edição de livros\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 5819100,\n          \"descricao\": \"Edição de cadastros, listas e outros produtos gráficos\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 4782201,\n          \"descricao\": \"Comércio varejista de calçados\"\n        },\n        \"nome\": \"\",\n        \"cnae\": {\n          \"codigo\": 5813100,\n          \"descricao\": \"Edição de revistas\"\n        }\n      },\n      \"numeroRecibo\": \"\",\n      \"numeroIdentificador\": \"\",\n      \"dataEmissao\": \"2018-05-19\"\n    }",
         "consumes": [
           "application/json"
         ],
@@ -196,15 +196,7 @@
               "type": "string"
             },
             "municipio": {
-              "type": "object",
-              "properties": {
-                "codigo": {
-                  "type": "string"
-                },
-                "nome": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             },
             "uf": {
               "type": "string"
@@ -215,7 +207,12 @@
           "type": "string"
         },
         "formaAtuacao": {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "Estabelecimento Fixo, Internet, Correio": {
+              "type": "string"
+            }
+          }
         },
         "ocupacaoPrincipal": {
           "type": "object",
@@ -229,7 +226,7 @@
           }
         },
         "ocupacoesSecundarias": {
-          "type": "object",
+          "type": "array",
           "properties": {
             "codigo": {
               "type": "string"
