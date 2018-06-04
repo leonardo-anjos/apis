@@ -39,7 +39,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/Conta"
+              "$ref": "#/definitions/CNPJs"
             }
           },
           "400": {
@@ -84,7 +84,7 @@
           "200": {
             "description": "Retorna os dados da Nota de Empenho Alterada",
             "schema": {
-              "$ref": "#/definitions/Conta"
+              "$ref": "#/definitions/CNPJs"
             }
           },
           "400": {
