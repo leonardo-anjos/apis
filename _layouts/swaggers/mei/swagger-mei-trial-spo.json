@@ -1,0 +1,393 @@
+host: gateway.apiserpro.serpro.gov.br
+security:
+  - Bearer: []
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API do Microempreendedor (api-mei)
+  description: |-
+
+    Para informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf
+
+        
+    A api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.
+    ## Códigos de Retorno comuns
+    | Código de retorno | Resumido | Explicação |
+    | ------------- |:--------------------|:-----------------------------------------------------------------------------|
+    | 200           | OK                  | Indica que o processamento foi realizado corretamente                                               |
+    | 401           | Unauthorized      | O cpf informado não está autorizado |
+    | 404           | Not found    | O cpf informado não possui certificados |
+    | 500           | Erro interno no servidor | O servidor está indisponível |
+
+    ## Endereço de Produção
+        https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei
+        
+    ## Endereço de Degustação
+        https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei
+        
+basePath: /consulta-mei-trial/api
+paths:
+  /status:
+    get:
+      tags:
+        - MEI
+      summary: Apresenta o status da api
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      description: |-
+
+        ## Exemplo
+        #### Chamada
+              [GET] https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei/status
+        #### Retorno
+            { 
+              "Mensagem informando que a api está ativa"
+            }
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: "API Ativa"
+        '500':
+          description: Erro interno da API
+  /v1/mei/cnpjs/71066868409:
+    get:
+      tags:
+        - MEI
+      summary: Listar os CNPJs de um CPF
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      description: |-
+
+        ## Exemplo
+        #### Chamada
+              [GET] https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei/cnpjs/71066868409
+        #### Parâmetros de Entrada
+            {
+              "CPF": "71066868409" }
+        #### Retorno
+            { 
+              "cnpj": "22025711000153",
+              "situacao": "SUSPENSO"
+            }
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retorna os cnpjs e a situação dos mesmos
+          schema:
+            $ref: '#/definitions/CNPJs'
+        '400':
+          description: Algum campo enviado é inválido
+        '403':
+          description: Usuário não tem permissão para realizar esta operação
+        '500':
+          description: Erro interno da API
+  /v1/mei/certificado/71066868409:
+    get:
+      tags:
+        - MEI
+      summary: Consultar Certificados Ativos de um CPF
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      description: |-
+
+        ## Exemplo
+        #### Chamada
+              [GET] https://apigateway.serpro.gov.br/consulta-mei-trial/v1/mei/certificado/71066868409?ativo=true/ (traz apenas os CNPJs ativos) 
+        #### Parâmetros de Entrada
+            {
+              "CPF": "71066868409"
+            }      
+        #### Retorno
+            {
+              "nomeEmpresarial": "DGKQWMX CHMIQAGH WXMVHU 71066868409",
+              "nomeEmpresario": "MARIA MARIA",               
+              "nomeFantasia": "@2 INSTITUTO DE ENSINO TEOLOGICO BIBLICO DO BRASIL",
+              "capitalSocial": 4500,
+              "identidade": {
+                "numero": "",
+                "orgaoEmissor": "",
+                "ufEmissor": "",
+                "cpf": "80454348053"
+              },
+              "situacaoCadastral": "ATIVO",
+              "dataSituacaoCadastral": "2011-01-23",
+              "cnpj": "13143379000130",
+              "nire": "35801597535",
+              "enderecoComercial": {
+                "cep": "07600000",
+                "logradouro": "RUA Jandira de lima Camargo",
+                "numero": "515",
+                "bairro": "Colina 2",
+                "municipio": "MAIRIPORA",
+                "uf": "SP"
+              },
+              "dataInicioAtividades": "2011-01-23",
+              "formaAtuacao": [
+                "Estabelecimento Fixo",
+                "Internet",
+                "Correio"
+                ],
+              "ocupacaoPrincipal": {
+                "nome": "",
+                "cnae": {
+                  "codigo": 8599604,
+                  "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+                }
+              },
+              "ocupacoesSecundarias": {
+                "nome": "",
+                "cnae": {
+                  "codigo": 8599605,
+                  "descricao": "Cursos preparatórios para concursos"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4789099,
+                  "descricao": "Comércio varejista de outros produtos Não especificados anteriormente"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4762800,
+                  "descricao": "Comércio varejista de discos, CDs, DVDs e fitas"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5811500,
+                  "descricao": "Edição de livros"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5819100,
+                  "descricao": "Edição de cadastros, listas e outros produtos gráficos"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4782201,
+                  "descricao": "Comércio varejista de calçados"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5813100,
+                  "descricao": "Edição de revistas"
+                }
+              },
+              "numeroRecibo": "",
+              "numeroIdentificador": "",
+              "dataEmissao": "2018-05-19"
+            }
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retorna os dados do certificado ativo
+          schema:
+            $ref: '#/definitions/dadosCNPJs'
+          
+        '400':
+          description: Algum campo enviado é inválido
+        '403':
+          description: Usuário não tem permissão para realizar esta operação
+        '500':
+          description: Erro interno da API
+  /v1/mei/certificado/71066868409/22025711000153:
+    get:
+      tags:
+        - MEI
+      summary: Consultar Certificado Específico de um CPF
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      description: |-
+
+        ## Exemplo
+        #### Chamada
+              [GET] GET] https://apigateway.serpro.gov.br/consulta-mei-trial/v1/mei/certificado/71066868409/22025711000153
+        #### Parânetris de Entrada
+            {
+              "CPF": "71066868409",
+              "CNPJ": "22025711000153"
+            
+        #### Retorno
+            {
+              "nomeEmpresarial": "MARIA MARIA 21348244844",
+              "nomeEmpresario": "MARIA MARIA",               
+              "nomeFantasia": "@2 INSTITUTO DE ENSINO TEOLOGICO BIBLICO DO BRASIL",
+              "capitalSocial": 4500,
+              "identidade": {
+                "numero": "",
+                "orgaoEmissor": "",
+                "ufEmissor": "",
+                "cpf": "80454348053"
+              },
+              "situacaoCadastral": "ATIVO",
+              "dataSituacaoCadastral": "2011-01-23",
+              "cnpj": "13143379000130",
+              "nire": "35801597535",
+              "enderecoComercial": {
+                "cep": "07600000",
+                "logradouro": "RUA Jandira de lima Camargo",
+                "numero": "515",
+                "bairro": "Colina 2",
+                "municipio": "MAIRIPORA",
+                "uf": "SP"
+              },
+              "dataInicioAtividades": "2011-01-23",
+              "formaAtuacao": [
+                "Estabelecimento Fixo",
+                "Internet",
+                "Correio"
+                ],
+              "ocupacaoPrincipal": {
+                "nome": "",
+                "cnae": {
+                  "codigo": 8599604,
+                  "descricao": "Treinamento em desenvolvimento profissional e gerencial"
+                }
+              },
+              "ocupacoesSecundarias": {
+                "nome": "",
+                "cnae": {
+                  "codigo": 8599605,
+                  "descricao": "Cursos preparatórios para concursos"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4789099,
+                  "descricao": "Comércio varejista de outros produtos Não especificados anteriormente"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4762800,
+                  "descricao": "Comércio varejista de discos, CDs, DVDs e fitas"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5811500,
+                  "descricao": "Edição de livros"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5819100,
+                  "descricao": "Edição de cadastros, listas e outros produtos gráficos"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 4782201,
+                  "descricao": "Comércio varejista de calçados"
+                },
+                "nome": "",
+                "cnae": {
+                  "codigo": 5813100,
+                  "descricao": "Edição de revistas"
+                }
+              },
+              "numeroRecibo": "",
+              "numeroIdentificador": "",
+              "dataEmissao": "2018-05-19"
+            }
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retorna os dados de um certificado específico
+          schema:
+            $ref: '#/definitions/dadosCNPJs'
+        '400':
+          description: Algum campo enviado é inválido
+        '403':
+          description: Usuário não tem permissão para realizar esta operação
+        '500':
+          description: Erro interno da API
+schemes:
+  - https
+definitions:
+  CNPJs:
+    properties:
+      cnpj:
+        type: string
+      situacao:
+        type: string
+  dadosCNPJs:
+    properties:
+      nomeEmpresarial:
+        type: string
+      nomeEmpresario:
+        type: string
+      nomeFantasia:
+        type: string
+      capitalSocial:
+        type: string
+      identidade:
+        type: object
+        properties:
+          numero:
+            type: string
+          orgaoEmissor:
+            type: string
+          ufEmissor:
+            type: string
+          cpf:
+            type: string
+      situacaoCadastral:
+        type: string
+      dataSituacaoCadastral:
+        type: string
+      cnpj:
+        type: string
+      nire:
+        type: string
+      enderecoComercial:
+        type: object
+        properties:
+          cep:
+            type: string
+          logradouro:
+            type: string
+          numero:
+            type: string
+          bairro:
+            type: string
+          municipio:
+            type: string
+          uf:
+            type: string
+      dataInicioAtividades:
+        type: string
+      formaAtuacao:
+        type: array
+        items:
+          type: string
+      ocupacaoPrincipal:
+        type: object
+        properties:
+          codigo:
+            type: string
+          cna:
+            type: string
+      ocupacoesSecundarias:
+        type: object
+        properties:
+          codigo:
+            type: string
+          cna:
+            type: string
+      numeroRecibo:
+        type: string
+      numeroIdentificador:
+        type: string
+      dataEmissao:
+        type: string
