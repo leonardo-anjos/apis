@@ -16,10 +16,35 @@
   "info": {
     "version": "1.0.0",
     "title": "API do Microempreendedor (api-mei)",
-    "description": "\nPara informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n\n    \nA api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.\n## Códigos de Retorno comuns\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Tudo funcionou como esperado e a operação foi realizada com sucesso                                               |\n| 400           | Requisição inválida | Alguma(s) informação(ões) enviadas não são válidas para a operação especificada. |\n| 403           | Não encontrado      | O usuário especificado não tem permissão para executar a operação especificada |\n| 500           | Erro no servidor    | Ocorreu algum erro interno.      |\n\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei\n    "
+    "description": "\nPara informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n\n    \nA api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.\n## Códigos de Retorno comuns\n| Código de retorno | Resumido | Explicação |\n| ------------- |:--------------------|:-----------------------------------------------------------------------------|\n| 200           | OK                  | Indica que o processamento foi realizado corretamente                                               |\n| 201           | Recurso criado |  |\n| 401           | Requisição inválida      | Requisição feita com erro |\n| 403           | Requisição não autorizada    | Requisição negada pelo servidor      |\n| 404           | Recurso não encontrado | |\n| 500           | Erro interno no servidor | O servidor está indisponível |\n\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei\n    "
   },
   "basePath": "/consulta-mei-trial/api",
   "paths": {
+    "/status": {
+      "get": {
+        "tags": [
+          "MEI"
+        ],
+        "summary": "Apresenta o status da api",
+        "x-auth-type": "Application & Application User",
+        "x-throttling-tier": "Unlimited",
+        "description": "\n## Exemplo\n#### Chamada\n      [GET] https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei/status\n#### Retorno\n    { \n      \"Mensagem informando que a api está ativa\"\n    }",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna uma mensagem de sucesso"
+          },
+          "500": {
+            "description": "Erro interno da API"
+          }
+        }
+      }
+    },
     "/v1/mei/cnpjs/71066868409": {
       "get": {
         "tags": [
