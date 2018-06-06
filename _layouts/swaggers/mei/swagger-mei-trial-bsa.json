@@ -1,8 +1,8 @@
 {
-  "host": "apigateway.serpro.gov.br",
+  "host": "apigateway.serpro.gov.br",   
   "security": [
     {
-      "Bearer": []
+      "Bearer": []  
     }
   ],
   "securityDefinitions": {
