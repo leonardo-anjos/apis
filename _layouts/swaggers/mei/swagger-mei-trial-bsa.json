@@ -16,7 +16,7 @@
   "info": {
     "version": "1.0.0",
     "title": "API do Microempreendedor (api-mei)",
-    "description": "\nPara informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n\n    \nA api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.\n## Códigos de Retorno comuns\n| Código de Retorno      | Resumido                | Explicação                  |\n| ----  | -------------  | ----------------------------------------------------  | \n| 200   | OK             | Indica que o processamento foi realizado corretamente |\n| 400   | Bad Request    | Requisição feita com erro                             |\n| 404   | Not found      | O cpf informado não possui certificados               |\n| 500   | Internal error | O servidor está indisponível                          |\n\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei\n    "
+    "description": "\nPara informações de como se autenticar antes de consumir a API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf\n\n    \nA api-due é disponibilizado através do `HTTP REST` oferencendo as operações de 'Listar CNPJs', 'Consultar Certificados' e 'Consultar Certificados Específicos'.\n## Códigos de Retorno comuns\n| Código de Retorno      | Resumido                | Explicação                  |\n| ----  | -------------  | ----------------------------------------------------  | \n| 200   | OK             | Indica que o processamento foi realizado corretamente |\n| 400   | Bad request    | Requisição feita com erro                             |\n| 404   | Not found      | O cpf informado não possui certificados               |\n| 500   | Internal error | O servidor está indisponível                          |\n\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/consulta-mei-trial/api/v1/mei\n    "
   },
   "basePath": "/consulta-mei-trial/api",
   "paths": {
@@ -77,13 +77,13 @@
             }
           },
           "400": {
-            "description": "Requisição feita com erro"
+            "description": "Bad request"
           },
           "404": {
-            "description": "O CPF não possui certificados"
+            "description": "Not found"
           },
           "500": {
-            "description": "Erro interno da API"
+            "description": "Internal error"
           }
         }
       }
@@ -120,18 +120,18 @@
             }
           },
           "400": {
-            "description": "Requisição feita com erro"
+            "description": "Bad request"
           },
           "404": {
-            "description": "O CPF não possui certificados"
+            "description": "Not found"
           },
           "500": {
-            "description": "Erro interno da API"
+            "description": "Internal error"
           }
         }
       }
     },
-    "/v1/mei/certificado/{cpf}/{certificado}": {
+    "/v1/mei/certificado/{cpf}/{cnpj}": {
       "get": {
         "tags": [
           "MEI"
@@ -155,7 +155,7 @@
             "type": "string"
           },
           {
-            "name": "certificado",
+            "name": "cnpj",
             "in": "path",
             "description": "cpf do responsável",
             "required": true,
@@ -170,13 +170,13 @@
             }
           },
           "400": {
-            "description": "Requisição feita com erro"
+            "description": "Bad request"
           },
           "404": {
-            "description": "O CPF não possui certificados"
+            "description": "Not found"
           },
           "500": {
-            "description": "Erro interno da API"
+            "description": "Internal error"
           }
         }
       }
