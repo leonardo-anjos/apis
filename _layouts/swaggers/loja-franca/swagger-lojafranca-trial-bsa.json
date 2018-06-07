@@ -37,7 +37,7 @@
     "version": "1",
     "title": "Integra Loja Franca"
   },
-  "basePath": "/loja-franca-trial/api",
+  "basePath": "/lojafranca-trial/api",
   "paths": {
     "Descrição": {
       "head": {
