@@ -1,5 +1,5 @@
 {
-  "host": "gateway.apiserpro.serpro.serpro.gov.br",
+  "host": "gateway.apiserpro.serpro.gov.br",
   "security": [
     {
       "Bearer": []
@@ -45,7 +45,7 @@
         }
       }
     },
-    "/v1/mei/cnpjs/71066868409": {
+    "/v1/mei/cnpjs/{cpf}": {
       "get": {
         "tags": [
           "MEI"
@@ -59,6 +59,15 @@
         ],
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "cpf do responsável",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -79,7 +88,7 @@
         }
       }
     },
-    "/v1/mei/certificado/71066868409": {
+    "/v1/mei/certificado/{cpf}": {
       "get": {
         "tags": [
           "MEI"
@@ -93,6 +102,15 @@
         ],
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "cpf do responsável",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -113,7 +131,7 @@
         }
       }
     },
-    "/v1/mei/certificado/71066868409/22025711000153": {
+    "/v1/mei/certificado/{cpf}/{certificado}": {
       "get": {
         "tags": [
           "MEI"
@@ -127,6 +145,22 @@
         ],
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "cpf do responsável",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "certificado",
+            "in": "path",
+            "description": "cpf do responsável",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
