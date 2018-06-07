@@ -131,7 +131,7 @@
         }
       }
     },
-    "/v1/mei/certificado/{cpf}/{certificado}": {
+    "/v1/mei/certificado/{cpf}/{cnpj}": {
       "get": {
         "tags": [
           "MEI"
@@ -155,7 +155,7 @@
             "type": "string"
           },
           {
-            "name": "certificado",
+            "name": "cnpj",
             "in": "path",
             "description": "cpf do responsável",
             "required": true,
