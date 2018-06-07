@@ -25,7 +25,7 @@
         "tags": [
           "MEI"
         ],
-        "summary": "Apresenta o Status da API",
+        "summary": "Apresenta o status da api",
         "x-auth-type": "Application & Application User",
         "x-throttling-tier": "Unlimited",
         "description": "\n## Exemplo\n#### Chamada\n      [GET] https://apigateway.serpro.gov.br/consulta-mei/api/v1/mei/status\n#### Retorno\n    { \n      \"Mensagem informando que a api está ativa\"\n    }",
@@ -77,10 +77,10 @@
             }
           },
           "400": {
-            "description": "Algum campo enviado é inválido"
+            "description": "Requisição feita com erro"
           },
-          "403": {
-            "description": "Usuário não tem permissão para realizar esta operação"
+          "404": {
+            "description": "O CPF não possui certificados"
           },
           "500": {
             "description": "Erro interno da API"
@@ -120,10 +120,10 @@
             }
           },
           "400": {
-            "description": "Algum campo enviado é inválido"
+            "description": "Requisição feita com erro"
           },
-          "403": {
-            "description": "Usuário não tem permissão para realizar esta operação"
+          "404": {
+            "description": "O CPF não possui certificados"
           },
           "500": {
             "description": "Erro interno da API"
@@ -170,10 +170,10 @@
             }
           },
           "400": {
-            "description": "Algum campo enviado é inválido"
+            "description": "Requisição feita com erro"
           },
-          "403": {
-            "description": "Usuário não tem permissão para realizar esta operação"
+          "404": {
+            "description": "O CPF não possui certificados"
           },
           "500": {
             "description": "Erro interno da API"
