@@ -47,7 +47,6 @@
         "summary": "Integra Loja Franca",
         "description": "A `API Integra Loja Franca` é disponibilizada através de serviço `HTTP REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.\n<br/> Destacamos que o sistema foi implementado recentemente para as lojas francas prepararem as adaptações necessárias aos seus sistemas próprios, podendo ainda ocorrer instabilidades pontuais.\n### Autenticação\nPara testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.\n<br/> Para informações de como se autenticar antes de consumir as API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        "
       },
-      "responses": {}
     },
     "Formatos e Tipos": {
       "head": {
