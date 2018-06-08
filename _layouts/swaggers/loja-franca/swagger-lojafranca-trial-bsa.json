@@ -13,39 +13,19 @@
     }
   },
   "swagger": "2.0",
-  "tags": [
-    {
-      "name": "1 Introdução"
-    },
-    {
-      "name": "2 Padrões"
-    },
-    {
-      "name": "3 Tabelas"
-    },
-    {
-      "name": "4 Métodos e Testes Consultas"
-    },
-    {
-      "name": "4 Métodos e Testes Venda"
-    },
-    {
-      "name": "4 Métodos e Testes Devolução/Troca"
-    }
-  ],
   "info": {
     "version": "1",
-    "title": "API Loja Franca"
+    "title": "Integra Loja Franca"
   },
-  "basePath": "/loja-franca-trial/api/",
+  "basePath": "/lojafranca-trial/api",
   "paths": {
     "Descrição": {
       "head": {
         "tags": [
           "1 Introdução"
         ],
-        "summary": "API Loja Franca",
-        "description": "A `API Loja Franca` é disponibilizada através de serviço `HTTP REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.\n<br/> Destacamos que o sistema foi implementado recentemente para as lojas francas prepararem as adaptações necessárias aos seus sistemas próprios, podendo ainda ocorrer instabilidades pontuais.\n### Autenticação\nPara testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.\n<br/> Para informações de como se autenticar antes de consumir as API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        "
+        "summary": "Integra Loja Franca",
+        "description": "A `API Integra Loja Franca` é disponibilizada através de serviço `HTTP REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.\n<br/> Destacamos que o sistema foi implementado recentemente para as lojas francas prepararem as adaptações necessárias aos seus sistemas próprios, podendo ainda ocorrer instabilidades pontuais.\n### Autenticação\nPara testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.\n<br/> Para informações de como se autenticar antes de consumir as API, por favor, consulte a documentação em: https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        "
       },
       "responses": {}
     },
@@ -55,7 +35,7 @@
           "2 Padrões"
         ],
         "summary": "Formatos e Tipos",
-        "description": "\nOs seguintes tipos de dados são utilizados pela API Loja Franca:\n\n| Tipos | Descrição | Formato\n| ---------------------- | :------------------------------------------------------------- | ------------------ |\n| string        | Cadeia de caracteres |\n| string - data     | String com formato de data  | yyyy-MM-dd\n| string - data/hora | String com formato de data e hora | yyyy-MM-ddTHH:mm:ss\n| integer | Número inteiro que representa códigos e identificadores |\n| number | Número inteiro em situações que pode passar do valor 2^31-1 |\n| decimal | Número fracionado, sempre com duas casas após o decimal, separado por \".\" | Ex: 123456789012.22 (Exceto cotação do dólar, que pode ter até 3 casas após o decimal).\n\n --------------------------"
+        "description": "\nOs seguintes tipos de dados são utilizados pela API Integra Loja Franca:\n\n| Tipos | Descrição | Formato\n| ---------------------- | :------------------------------------------------------------- | ------------------ |\n| string        | Cadeia de caracteres |\n| string - data     | String com formato de data  | yyyy-MM-dd\n| string - data/hora | String com formato de data e hora | yyyy-MM-ddTHH:mm:ss\n| integer | Número inteiro que representa códigos e identificadores |\n| number | Número inteiro em situações que pode passar do valor 2^31-1 |\n| decimal | Número fracionado, sempre com duas casas após o decimal, separado por \".\" | Ex: 123456789012.22 (Exceto cotação do dólar, que pode ter até 3 casas após o decimal).\n\n --------------------------"
       },
       "responses": {}
     },
@@ -65,7 +45,7 @@
           "2 Padrões"
         ],
         "summary": "Formatos e Tipos",
-        "description": "\n**Erros de negócio:**\n<br/> São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância entre os parâmetros enviados e as regras de negócio estabelecidas para as lojas francas.\nA resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 422         | Erro de Negócio do Loja Franca\n<br/> **Atributos da resposta - Status code 422**\n<br/>\n| Nome | Descrição | Tipo \n| ----------- | --------- | -----\n| codigo      | Código que identifica o erro | integer\n| mensagem    | Mensagem de Erro | string\n<br/> **Erros de formatação**\n<br/> São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância na formatação/tipo de dados sugeridos pelos parâmetros enviados.\n<br/> A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 400         | Erro de formatação dos parâmetros enviados\n<br/> **Atributos da resposta - Status code 400**\n<br/>\n| Nome | Descrição | Tipo \n| ----------- | --------- | -----\n| codigo      | Código que identifica o erro | integer\n| mensagem    | Mensagem de Erro | string        \n<br/> Independentemente do tipo de erro, as mensagens de erro podem conter uma <tag>, que visa facilitar o tratamento do erro caso a aplicação que esteja utilizando a API do Loja Franca de Fronteira queira fazer algum tratamento específico, como por exemplo, uma extração de parâmetros a partir de uma mensagem de erro.\n<br/> Os erros que a API do Loja Franca de Fronteira dispara podem ser consultados na tabela de erros, mais abaixo."
+        "description": "\n**Erros de negócio:**\n<br/> São erros disparados pela API Integra Loja Franca de Fronteira quando há uma discordância entre os parâmetros enviados e as regras de negócio estabelecidas para as lojas francas.\nA resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 422         | Erro de Negócio do Loja Franca\n<br/> **Atributos da resposta - Status code 422**\n<br/>\n| Nome | Descrição | Tipo \n| ----------- | --------- | -----\n| codigo      | Código que identifica o erro | integer\n| mensagem    | Mensagem de Erro | string\n<br/> **Erros de formatação**\n<br/> São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância na formatação/tipo de dados sugeridos pelos parâmetros enviados.\n<br/> A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 400         | Erro de formatação dos parâmetros enviados\n<br/> **Atributos da resposta - Status code 400**\n<br/>\n| Nome | Descrição | Tipo \n| ----------- | --------- | -----\n| codigo      | Código que identifica o erro | integer\n| mensagem    | Mensagem de Erro | string        \n<br/> Independentemente do tipo de erro, as mensagens de erro podem conter uma <tag>, que visa facilitar o tratamento do erro caso a aplicação que esteja utilizando a API do Loja Franca de Fronteira queira fazer algum tratamento específico, como por exemplo, uma extração de parâmetros a partir de uma mensagem de erro.\n<br/> Os erros que a API do Loja Franca de Fronteira dispara podem ser consultados na tabela de erros, mais abaixo."
       },
       "responses": {}
     },
@@ -204,7 +184,7 @@
       "post": {
         "summary": "Processa venda de viajante",
         "tags": [
-          "4 Métodos e Testes Venda"
+          "5 Métodos e Testes Venda"
         ],
         "description": "Efetua uma operação de processamento de venda. Para Viajante Brasileiro, a identificação pelo número de documento de CPF é sempre obrigatória. A identificação por documento é sempre obrigatória independentemente se o Viajante for Brasileiro ou Estrangeiro.\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|valorTotalItensImportados|Valor total (em US$) de itens importados na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensNacionais não for informado ou for igual a 0\n|valorTotalItensNacionais|Valor total (em US$) de itens nacionais na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensImportados não for informado ou for igual a 0\n|valorCotacaoLoja|Valor da cotação do dólar oferecido pela Loja Franca|decimal|body|Obrigatório\n|viajanteParametro|Identificação do viajante|viajante|body|Obrigatório. Formato segue os parâmetros da Consulta de Viajante. Documento é obrigatório para brasileiros na venda (atributos codigoPaisOrigems, codigoTipo e numero)\n|produtosControleQuantitativo|Representa a quantidade de produtos controlados presentes na venda do viajante|produtos|body|Obrigatório quando é registrada uma venda com produtos controlados.\n|codigoProduto|Código do produto|Integer|body|Obrigatório quando é registrada uma venda com produtos controlados. Ver tabela de produtos.\n|quantidade| Quantidade de produtos controlados na venda|integer|body|Obrigatório quando é registrada uma venda com produtos controlados\n|valorTotal|Valor total destes produtos na Venda|decimal|body|Obrigatório quando é registrada uma venda com produtos controlados\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|idVenda|Número da venda|string|\n|dataHoraVenda|Data do registro da venda|string|yyyy-MM-ddTHH:mm:ss\n|darf|Darf gerado caso a venda exceda a cota|darf|\n|numero|Número do Darf|number|\n|valor|Valor do Darf|decimal|\n|dataVencimento|Data de vencimento do Darf|string|yyyy-MM-dd\n|codigoReceita|Código da receita recolhida|integer|\n|pdf|PDF do boleto do Darf|byte|String encoded em base-64\n## Tipos de Viajantes\n### Viajante Brasileiro (sem produtos controlados)\nEste tipo está descrito no body abaixo.\n<br/> \n### Viajante Estrangeiro (sem produtos controlados)\n{\n\"valorTotalItensImportados\": 10,\n\"valorTotalItensNacionais\": 0,\n\"valorCotacaoLoja\": 3.24,\n\"viajanteParametro\": {\n  \"documento\": {\n    \"codigoPaisOrigem\": 1,\n    \"codigoTipo\": 1,\n    \"numero\": \"12345\"\n    \"dataNascimento\": \"1980-01-15\"\n    \"nomeNoDocumento\": \"Fulano de Tal\"\n    }}}\n### Viajante Brasileiro (com produtos controlados)\n{\n\"valorTotalItensImportados\": 10,\n\"valorTotalItensNacionais\": 0,\n\"valorCotacaoLoja\": 3.24,\n\"viajanteParametro\": {\n  \"cpf\": \"00000000191\",\n  \"documento\": {\n    \"codigoPaisOrigem\": 105,\n    \"codigoTipo\": 1,\n    \"numero\": \"12345\"\n  }},\n\"produtosControleQuantitativo\": [{\n  \"codigoProduto\": 10,\n  \"quantidade\": 2,\n  \"valorTotal\": 5.3\n  }, {\n  \"codigoProduto\": 1,\n  \"quantidade\": 1,\n  \"valorTotal\": 4.7\n  }]}\n## Tipos de Saída \n### Sem o DARF\nidVenda: '2017000000020992652'\ndataHoraVenda: '2017-12-11T17:27:41'\n### Com o DARF\nEste tipo está descrito no response abaixo.",
         "consumes": [
@@ -239,7 +219,7 @@
       "put": {
         "summary": "Entrega venda para viajante",
         "tags": [
-          "4 Métodos e Testes Venda"
+          "5 Métodos e Testes Venda"
         ],
         "description": "Efetua a operação de entrega de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|idVenda|Identificação do número da venda gerada pelo sistema Loja Franca de Fronteira na operação Processa venda de viajante|string|query|Obrigatório\n|notaFiscalSaida|Número da NF de saída gerada pelo sistema gerador de NF|string|query|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraEntrega|Data e hora da entrega da venda|string|yyyy-MM-ddTHH:mm:ss",
         "parameters": [
@@ -275,7 +255,7 @@
       "put": {
         "summary": "Cancela venda de viajante",
         "tags": [
-          "4 Métodos e Testes Venda"
+          "5 Métodos e Testes Venda"
         ],
         "description": "Efetua uma operação de cancelamento de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|idVenda|Identificação do número da venda gerada pelo sistema Loja Franca de Fronteira na operação Processa venda de viajante|string|query|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraCancelamento|Data e hora do cancelamento da venda|string|yyyy-MM-ddTHH:mm:ss",
         "parameters": [
@@ -311,7 +291,7 @@
       "post": {
         "summary": "Devolução parcial de venda",
         "tags": [
-          "4 Métodos e Testes Devolução/Troca"
+          "6 Métodos e Testes Devolução/Troca"
         ],
         "description": "Efetua uma operação de devolução parcial de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|valorTotalItensImportados|Valor total (em US$) de itens importados na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensNacionais não for informado ou for igual a 0\n|valorTotalItensNacionais|Valor total (em US$) de itens nacionais na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensImportados não for informado ou for igual a 0\n|produtosControleQuantitativo|Representa a quantidade de produtos controlados presentes na venda do viajante|produtos|body|Formato segue os parâmetros do Processa venda de viajante\n|codigoProduto|Código do produto|integer|body|Obrigatório quando é registrada uma venda com produtos controlados. Veja Tabela de Produtos\n|quantidade| Quantidade de produtos controlados na venda|integer|body|Obrigatório quando é registrada uma venda com produtos controlados\n|valorTotal|Valor total destes produtos na Venda|decimal|body|Obrigatório quando é registrada uma venda com produtos controlados\n|venda|Representa a Venda a ser devolvida|venda|body|Obrigatório\n|id|Identificação do número da venda gerado pelo sistema Loja Franca de Fronteira na operação Processa Venda de Viajante|string|body|obrigatório\n|notaFiscalEntrada|Número da Nota Fiscal de entrada gerada pelo sistema gerador de nota fiscal|string|body|obrigatorio\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraDevolucaoParcial|Data e hora da devolução parcial|string|yyyy-MM-ddTHH:mm:ss\n## Tipos de Devolução Parcial de Venda\n### Devolução Parcial sem Produtos Controlados \n {\n\"valorTotalItensImportados\": 9.95,\n\"valorTotalItensNacionais\": 0,\n\"venda\": {\n\"id\": \"2017000000020992652\",\n\"numeroNotaFiscalEntrada\": \"42100484684182000157550010000000020108042108\"\n}}  \n### Devolução Parcial com Produtos Controlados\nEste tipo está descrito no body abaixo.",
         "consumes": [
@@ -346,7 +326,7 @@
       "put": {
         "summary": "Devolução total de venda",
         "tags": [
-          "4 Métodos e Testes Devolução/Troca"
+          "6 Métodos e Testes Devolução/Troca"
         ],
         "description": "Efetua uma operação de devolução total de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|idVenda|Número da venda gerada pelo sistema Loja Franca|string|query|Obrigatório\n|notaFiscalSaida|Número da NF de saída gerada pelo sistema gerador de NF|string|query|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraDevolucaoTotal|Data e hora da devolucao total|string|yyyy-MM-ddTHH:mm:ss",
         "parameters": [
@@ -382,7 +362,7 @@
       "post": {
         "summary": "Troca Item Idêntico de Vendas",
         "tags": [
-          "4 Métodos e Testes Devolução/Troca"
+          "6 Métodos e Testes Devolução/Troca"
         ],
         "description": "Efetua uma operação de troca de itens idênticos de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|valorTotalItensImportados|Valor total (em US$) de itens importados na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensNacionais não for informado ou for igual a 0\n|valorTotalItensNacionais|Valor total (em US$) de itens nacionais na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensImportados não for informado ou for igual a 0\n|produtosControleQuantitativo|Representa a quantidade de produtos controlados presentes na venda do viajante|produtos|body|Formato segue os parâmetros do Processa venda de viajante\n|codigoProduto|Código do produto|integer|body|Obrigatório quando é registrada uma venda com produtos controlados. Veja Tabela de Produtos\n|quantidade| Quantidade de produtos controlados na venda|integer|body|Obrigatório quando é registrada uma venda com produtos controlados\n|valorTotal|Valor total destes produtos na Venda|decimal|body|Obrigatório quando é registrada uma venda com produtos controlados\n|venda|Representa a Venda a ser devolvida|venda|body|Obrigatório\n|id|Identificação do número da venda gerado pelo sistema Loja Franca de Fronteira na operação Processa Venda de Viajante|string|body|obrigatório\n|notaFiscalEntrada|Número da Nota Fiscal de entrada gerada pelo sistema gerador de nota fiscal|string|body|obrigatorio\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraTrocaItemIdentico|Data e hora da troca|string|yyyy-MM-ddTHH:mm:ss\n## Tipos de Troca de Itens Idênticos\n### Troca de Itens Idênticos sem Produtos Controlados \n {\n\"valorTotalItensImportados\": 9.95,\n\"valorTotalItensNacionais\": 0,\n\"venda\": {\n\"id\": \"2017000000020992652\",\n\"numeroNotaFiscalEntrada\": \"42100484684182000157550010000000020108042108\"\n}}  \n### Troca de Itens Idênticos com Produtos Controlados\nEste tipo está descrito no body abaixo.",
         "consumes": [

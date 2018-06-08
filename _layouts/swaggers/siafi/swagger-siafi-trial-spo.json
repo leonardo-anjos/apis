@@ -524,7 +524,7 @@
         "naturezaDespesa": {
           "type": "string"
         },
-        "subitem": {
+        "subitem": { 
           "type": "string"
         },
         "ugResponsavel": {

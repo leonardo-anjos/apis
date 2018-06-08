@@ -31,7 +31,7 @@
         "tags": [
           "v1"
         ],
-        "description": "Retorna os vínculos relacionados ao CPF.\n### Exemplo\n    [GET] https://apigateway.serpro.gov.br/registra-autorizacao-consignacao-trial/v1/vinculo/11111111111\n\n<br/>\n### Retorno\n\n    [\n      {\n        \"codigoOrgao\": \"00001\",\n        \"sigaOrgao\": \"ORG\",\n        \"matricula\": \"123456789012\",\n        \"nomeServidor\": \"Servidor da Silva\",\n        \"nomeBeneficiario\":\"Beneficiario da Silva\"\n      }\n    ]\n\n<br/>   \n#### Exemplos para retornos diferentes\n\n  Use os seguintes valores para obter códigos de retorno diferentes\n\n    (200) ni: 11111111111\n    (400) ni: 1111111111\n    (404) ni: 22222222222",
+        "description": "Retorna os vínculos relacionados ao CPF.\n### Exemplo\n    [GET] https://apigateway.serpro.gov.br/registra-autorizacao-consignacao/v1/vinculo/11111111111\n\n<br/>\n### Retorno\n\n    [\n      {\n        \"codigoOrgao\": \"00001\",\n        \"sigaOrgao\": \"ORG\",\n        \"matricula\": \"123456789012\",\n        \"nomeServidor\": \"Servidor da Silva\",\n        \"nomeBeneficiario\":\"Beneficiario da Silva\"\n      }\n    ]\n\n<br/>   \n#### Exemplos para retornos diferentes\n\n  Use os seguintes valores para obter códigos de retorno diferentes\n\n    (200) ni: 11111111111\n    (400) ni: 1111111111\n    (404) ni: 22222222222",
         "produces": [
           "application/json"
         ],
@@ -73,7 +73,7 @@
         "tags": [
           "v1"
         ],
-        "description": "Registra a autorização de consignação dada pelo servidor.\n### Exemplo\n    [POST] https://apigateway.serpro.gov.br/registra-autorizacao-consignacao-trial/v1/autorizacao\n    \n    \n    {\n      \"matricula\": \"123456789012\",\n      \"canalAutorizacao\": \"20\",\n      \"tipoConsignacao\" : 1\n    }\n    \n<br/>   \n#### Exemplos para retornos diferentes\n\n  Use os seguintes valores para obter códigos de retorno diferentes\n\n    (201) matricula: 123456789012, canalAutorizacao: 20, tipoConsignacao: 1\n    (409) matricula: 123456789012, canalAutorizacao: 25, tipoConsignacao: 1\n    (422) matricula: 123456789012, canalAutorizacao: 20, tipoConsignacao: 2\n    (500) matricula: 223456789012, canalAutorizacao: 20, tipoConsignacao: 1\n\n<br/> Em caso de sucesso, a API retornará o código 201",
+        "description": "Registra a autorização de consignação dada pelo servidor.\n### Exemplo\n    [POST] https://apigateway.serpro.gov.br/registra-autorizacao-consignacao/v1/autorizacao\n    \n    \n    {\n      \"matricula\": \"123456789012\",\n      \"canalAutorizacao\": \"20\",\n      \"tipoConsignacao\" : 1\n    }\n    \n<br/>   \n#### Exemplos para retornos diferentes\n\n  Use os seguintes valores para obter códigos de retorno diferentes\n\n    (201) matricula: 123456789012, canalAutorizacao: 20, tipoConsignacao: 1\n    (409) matricula: 123456789012, canalAutorizacao: 25, tipoConsignacao: 1\n    (422) matricula: 123456789012, canalAutorizacao: 20, tipoConsignacao: 2\n    (500) matricula: 223456789012, canalAutorizacao: 20, tipoConsignacao: 1\n\n<br/> Em caso de sucesso, a API retornará o código 201",
         "consumes": [
           "application/json"
         ],
