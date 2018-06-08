@@ -4098,7 +4098,7 @@
     border-color: #0000FF;
     border-width: 1px;
 		border-radius: 5px;
-		font-size: 20px;
+		font-size: 25px;
 }
 
 .GETLabel{
@@ -4107,6 +4107,18 @@
 		font-weight:bold;
 		padding:3px;
 		border-radius: 5px;
+}
+
+button.testeAPI{
+	float:right;
+	height:50%;
+	font-size: 11px;
+	padding:0;
+	margin:0;
+	background-color: #00f;
+	color:#fff !important;
+	border: 0px !important;
+	font-weight: bold !important;
 }
 
 .tab{
@@ -4131,14 +4143,14 @@
 }
 
 .tab button.tab.active {
-    background-color: #999;
+    background-color: #fff;
     float: left;
     border: 2px !important;
 		border-color: white !important;
     cursor: pointer;
     transition: 0.3s;
 		border-radius: 0px;
-		color: #fff !important;
+		color: #000 !important;
 		box-shadow: none !important;
 		font-weight: bold;
 
@@ -4148,5 +4160,5 @@
     padding: 3px 6px;
     border: 1px solid #ccc;
     border-top: none;
-		background-color: #999;
+		background-color: #fff;
 }

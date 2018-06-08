@@ -57,7 +57,7 @@
 										<h2 id="op1">Consulta dados de Pessoa Física pelo Número de Inscrição (NI)</h2>
 									</header>
 									<div class="content">
-										<p class="GETOperation"><span class="GETLabel">GET</span><strong> /v1/cpf/{ni}</strong></p>
+										<p class="GETOperation"><span class="GETLabel">GET</span><strong> /v1/cpf/{ni}</strong><button class="testeAPI">Teste aqui</button></p>
 										<h3>Informações de entrada e saída</h3>
 										<div class="tab">
 										  <button class="tablinksData tab" onclick="openTab(event, 'entrada','Data')">Entrada</button>
@@ -130,7 +130,7 @@
 										</div>
 										<div id="cURL" class="tabcontentCode">
 										  <h3>cURL</h3>
-										  <pre><code>curl -X GET -H "Accept: application/json" -H "Authorization: Bearer [your-token]"
+										  <pre><code>curl -X GET -H "Accept: application/json" -H "Authorization: Bearer [token de acesso]"
 "https://apigateway.serpro.gov.br/consulta-cpf/api/v1/11111111111"</code></pre>
 										</div>
 
@@ -144,7 +144,7 @@ Dim response As String
 strURL = "https://apigateway.serpro.gov.br/consulta-cpf/v1/cpf/11111111111"
 
 objHTTP.Open "GET", strURL, False
-objHTTP.SetRequestHeader "Authorization", "Bearer [your-token]"
+objHTTP.SetRequestHeader "Authorization", "Bearer [token de acesso]"
 objHTTP.SetRequestHeader "Accept", "application/json"
 objHTTP.Send
 
@@ -159,7 +159,7 @@ MsgBox response</code></pre>
 
 var options = { method: 'GET',
   url: 'https://apigateway.serpro.gov.br/consulta-cpf/v1/cpf/11111111111',
-  headers: { authorization: 'Bearer [your-token]' },
+  headers: { authorization: 'Bearer [token de acesso]' },
   body: {},
   json: true };
 
