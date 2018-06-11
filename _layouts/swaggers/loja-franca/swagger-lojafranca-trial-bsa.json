@@ -15,7 +15,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1",
-    "title": "Integra Loja Franca"
+    "title": "Integra Loja Franca",
+    "description": "\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/lojafranca-trial/api/\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/lojafranca-trial/api/"
   },
   "basePath": "/lojafranca-trial/api",
   "paths": {
