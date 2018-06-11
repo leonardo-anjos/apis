@@ -46,7 +46,7 @@
           "2 Padrões"
         ],
         "summary": "Formatos e Tipos de Erros",
-        "description": "\n**Erros de negócio:**\n<br/> São erros disparados pela API Integra Loja Franca de Fronteira quando há uma discordância entre os parâmetros enviados e as regras de negócio estabelecidas para as lojas francas. <br/>\n A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 422         | Erro de Negócio do Loja Franca\n<br/> **Erros de formatação:**\n <br/> São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância na formatação/tipo de dados sugeridos pelos parâmetros enviados.\n<br/> A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | ---------\n| 400         | Erro de formatação dos parâmetros enviados"
+        "description": "\n**Erros de negócio:**\n<br/> São erros disparados pela API Integra Loja Franca de Fronteira quando há uma discordância entre os parâmetros enviados e as regras de negócio estabelecidas para as lojas francas. <br/>\n A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | --------- |\n| 422         | Erro de Negócio do Loja Franca\n<br/> **Erros de formatação:**\n <br/> São erros disparados pela API do Loja Franca de Fronteira quando há uma discordância na formatação/tipo de dados sugeridos pelos parâmetros enviados.\n<br/> A resposta HTTP será:\n| Status Code | Descrição \n| ----------- | --------- |\n| 400         | Erro de formatação dos parâmetros enviados"
       },
       "responses": {}
     },
