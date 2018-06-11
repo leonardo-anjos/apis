@@ -26,7 +26,7 @@
           "1 Introdução"
         ],
         "summary": "Integra Loja Franca",
-        "description": "## API ##\n--------------\n<br/> A `API INTEGRA LOJA FRANCA` é disponibilizada através de serviço `HTTP REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.\n<br/><br/> Destacamos que o sistema foi implementado recentemente para as lojas francas e que adaptações são necessárias aos seus sistemas proprietários, podendo ocorrer instabilidades pontuais.\n<br/><br/>\n## Autenticação ##\n--------------\n<br/> Para testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.\n<br/><br/> Para informações de como se autenticar antes de consumir as API, por favor, consulte a documentação no link abaixo.\n<br/><br/> https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        "
+        "description": "## API ##\n--------------\n<br/> A `API INTEGRA LOJA FRANCA` é disponibilizada através de serviço `HTTP REST`, oferencendo operações para o processo de vendas das Lojas Francas de Fronteira.\n<br/><br/> Destacamos que o sistema foi implementado recentemente para as lojas francas e que adaptações são necessárias aos sistemas proprietários, podendo ocorrer instabilidades pontuais.\n<br/><br/>\n## Autenticação ##\n--------------\n<br/> Para testar a degustação da API, não é necessário realizar autenticação prévia. Porém, para consumo no ambiente produtivo, a autenticação prévia é necessária.\n<br/><br/> Para informações de como se autenticar antes de consumir as API, por favor, consulte a documentação no link abaixo.\n<br/><br/> https://servicos.serpro.gov.br/api-serpro/biblioteca/arquivos/como-autenticar-documentacao-api.pdf        "
       },
       "responses": {}
     },
@@ -55,7 +55,7 @@
         "tags": [
           "3 Tabelas"
         ],
-        "summary": "Formatos e Tipos de Produtos",
+        "summary": "Tabela Formato/Tipo Produtos",
         "description": "\n| Código | Descrição \n| ----------- | ---------\n| 1         | Bebida alcoólica\n| 2         | Cigarro\n| 3         | Fumo"
       },
       "responses": {}
@@ -65,7 +65,7 @@
         "tags": [
           "3 Tabelas"
         ],
-        "summary": "Formatos e Tipos de Documentos",
+        "summary": "Tabela Formato/Tipo Documentos",
         "description": "\n| Código | Descrição | Código do País | País \n| ------ | --------- | -------------- | ----\n| 1         | Passaporte | TODOS OS PAÍSES | \n| 2         | Registro de Identidade Civil | 105 | Brasil\n| 3         | Cédula de Identidade AC | 105 | Brasil\n| 4         | Cédula de Identidade AL | 105 | Brasil\n| 5         | Cédula de Identidade AM | 105 | Brasil\n| 6         | Cédula de Identidade AP | 105 | Brasil\n| 7         | Cédula de Identidade BA | 105 | Brasil\n| 8         | Cédula de Identidade CE | 105 | Brasil\n| 9         | Cédula de Identidade DF | 105 | Brasil\n| 10        | Cédula de Identidade ES | 105 | Brasil\n| 11        | Cédula de Identidade GO | 105 | Brasil\n| 12        | Cédula de Identidade MA | 105 | Brasil\n| 13        | Cédula de Identidade MG | 105 | Brasil\n| 14        | Cédula de Identidade MS | 105 | Brasil\n| 15        | Cédula de Identidade MT | 105 | Brasil\n| 16        | Cédula de Identidade PA | 105 | Brasil \n| 17        | Cédula de Identidade PB | 105 | Brasil\n| 18        | Cédula de Identidade PE | 105 | Brasil\n| 19        | Cédula de Identidade PI | 105 | Brasil\n| 20        | Cédula de Identidade PR | 105 | Brasil\n| 21        | Cédula de Identidade RJ | 105 | Brasil\n| 22        | Cédula de Identidade RN | 105 | Brasil\n| 23        | Cédula de Identidade RO | 105 | Brasil\n| 24        | Cédula de Identidade RR | 105 | Brasil\n| 25        | Cédula de Identidade RS | 105 | Brasil\n| 26        | Cédula de Identidade SC | 105 | Brasil\n| 27        | Cédula de Identidade SE | 105 | Brasil\n| 28        | Cédula de Identidade SP | 105 | Brasil\n| 29        | Cédula de Identidade TO | 105 | Brasil\n| 30        | Cédula de Identidade para estrangeiro | 105 | Brasil\n| 31        | Documento Nacional de Identidad | 63 | Argentina \n| 32        | Cédula de Identidad | 586 | Paraguai\n| 33        | Cédula de Identidad | 845 | Uruguai\n| 34        | Cédula de Identidad | 845 | Venezuela\n| 35        | Cédula de Identidad para Nacionales | 97 | Bolívia\n| 36        | Cédula de Identidad para Extranjeros | 97 | Bolívia\n| 37        | Cédula de Identidad | 158 | Chile\n| 38        | Cédula de Ciudadanía | 169 | Colômbia\n| 39        | Tarjeta de Identidad | 169 | Colômbia\n| 40        | Cédula de Extranjería | 169 | Colômbia\n| 41        | Cédula de Ciudadanía | 239 | Equador\n| 42        | Cédula de Identidad para extranjeros | 239 | Equador\n| 43        | Documento Nacional de Identidad | 589 | Peru\n| 44        | Carné de Extranjería | 589 | Peru"
       },
       "responses": {}
@@ -75,7 +75,7 @@
         "tags": [
           "3 Tabelas"
         ],
-        "summary": "Tabela de países",
+        "summary": "Tabela de Países",
         "description": "Ver [tabela de países da Receita Federal do Brasil](http://normas.receita.fazenda.gov.br/sijut2consulta/anexoOutros.action?idArquivoBinario=22672 \"Tabela de países da Receita Federal do Brasil\")"
       }
     },
