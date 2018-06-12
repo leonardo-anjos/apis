@@ -155,7 +155,7 @@
     "/cotacaoDolar": {
       "get": {
         "tags": [
-          "4 Métodos e Testes Consultas - II"
+          "7 Métodos e Testes Consultas - II"
         ],
         "summary": "Consulta cotação do dólar",
         "description": "Retorna a cotação do dólar de uma determinada data.\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|dataCotacao|Data da cotação a pesquisar|string|query|Obrigatório yyyy-MM-dd\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes \n|----|---------|----|--------\n|data|Data da cotação retornada|string|yyyy-MM-dd\n|valorOficial|Valor da cotação do dolar na data retornada|decimal|",
@@ -292,7 +292,7 @@
       "post": {
         "summary": "Devolução parcial de venda",
         "tags": [
-          "5 Métodos Devolucao e Troca"
+          "6 Métodos Devolucao e Troca"
         ],
         "description": "Efetua uma operação de devolução parcial de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|valorTotalItensImportados|Valor total (em US$) de itens importados na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensNacionais não for informado ou for igual a 0\n|valorTotalItensNacionais|Valor total (em US$) de itens nacionais na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensImportados não for informado ou for igual a 0\n|produtosControleQuantitativo|Representa a quantidade de produtos controlados presentes na venda do viajante|produtos|body|Formato segue os parâmetros do Processa venda de viajante\n|codigoProduto|Código do produto|integer|body|Obrigatório quando é registrada uma venda com produtos controlados. Veja Tabela de Produtos\n|quantidade| Quantidade de produtos controlados na venda|integer|body|Obrigatório quando é registrada uma venda com produtos controlados\n|valorTotal|Valor total destes produtos na Venda|decimal|body|Obrigatório quando é registrada uma venda com produtos controlados\n|venda|Representa a Venda a ser devolvida|venda|body|Obrigatório\n|id|Identificação do número da venda gerado pelo sistema Loja Franca de Fronteira na operação Processa Venda de Viajante|string|body|obrigatório\n|notaFiscalEntrada|Número da Nota Fiscal de entrada gerada pelo sistema gerador de nota fiscal|string|body|obrigatorio\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraDevolucaoParcial|Data e hora da devolução parcial|string|yyyy-MM-ddTHH:mm:ss\n## Tipos de Devolução Parcial de Venda\n### Devolução Parcial sem Produtos Controlados \n {\n\"valorTotalItensImportados\": 9.95,\n\"valorTotalItensNacionais\": 0,\n\"venda\": {\n\"id\": \"2017000000020992652\",\n\"numeroNotaFiscalEntrada\": \"42100484684182000157550010000000020108042108\"\n}}  \n### Devolução Parcial com Produtos Controlados\nEste tipo está descrito no body abaixo.",
         "consumes": [
@@ -327,7 +327,7 @@
       "put": {
         "summary": "Devolução total de venda",
         "tags": [
-          "5 Métodos Devolucao e Troca"
+          "6 Métodos Devolucao e Troca"
         ],
         "description": "Efetua uma operação de devolução total de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|idVenda|Número da venda gerada pelo sistema Loja Franca|string|query|Obrigatório\n|notaFiscalSaida|Número da NF de saída gerada pelo sistema gerador de NF|string|query|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraDevolucaoTotal|Data e hora da devolucao total|string|yyyy-MM-ddTHH:mm:ss",
         "parameters": [
@@ -363,7 +363,7 @@
       "post": {
         "summary": "Troca Item Idêntico de Vendas",
         "tags": [
-          "5 Métodos Devolucao e Troca"
+          "6 Métodos Devolucao e Troca"
         ],
         "description": "Efetua uma operação de troca de itens idênticos de venda\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|valorTotalItensImportados|Valor total (em US$) de itens importados na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensNacionais não for informado ou for igual a 0\n|valorTotalItensNacionais|Valor total (em US$) de itens nacionais na venda para o viajante|decimal|body|Obrigatório quando valorTotalItensImportados não for informado ou for igual a 0\n|produtosControleQuantitativo|Representa a quantidade de produtos controlados presentes na venda do viajante|produtos|body|Formato segue os parâmetros do Processa venda de viajante\n|codigoProduto|Código do produto|integer|body|Obrigatório quando é registrada uma venda com produtos controlados. Veja Tabela de Produtos\n|quantidade| Quantidade de produtos controlados na venda|integer|body|Obrigatório quando é registrada uma venda com produtos controlados\n|valorTotal|Valor total destes produtos na Venda|decimal|body|Obrigatório quando é registrada uma venda com produtos controlados\n|venda|Representa a Venda a ser devolvida|venda|body|Obrigatório\n|id|Identificação do número da venda gerado pelo sistema Loja Franca de Fronteira na operação Processa Venda de Viajante|string|body|obrigatório\n|notaFiscalEntrada|Número da Nota Fiscal de entrada gerada pelo sistema gerador de nota fiscal|string|body|obrigatorio\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|dataHoraTrocaItemIdentico|Data e hora da troca|string|yyyy-MM-ddTHH:mm:ss\n## Tipos de Troca de Itens Idênticos\n### Troca de Itens Idênticos sem Produtos Controlados \n {\n\"valorTotalItensImportados\": 9.95,\n\"valorTotalItensNacionais\": 0,\n\"venda\": {\n\"id\": \"2017000000020992652\",\n\"numeroNotaFiscalEntrada\": \"42100484684182000157550010000000020108042108\"\n}}  \n### Troca de Itens Idênticos com Produtos Controlados\nEste tipo está descrito no body abaixo.",
         "consumes": [
