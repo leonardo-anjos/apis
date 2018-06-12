@@ -93,7 +93,7 @@
         "tags": [
           "4 Métodos de Consultas"
         ],
-        "summary": "Consulta de cota",
+        "summary": "Consulta de Cota",
         "description": "Retorna a cota disponível para um determinado viajante. Para Viajante Brasileiro, a identificação pelo número de documento CPF é sempre obrigatória.\n## Parâmetros de Entrada\n### Parâmetros para Viajante (Brasileiro ou Estrangeiro) com CPF\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|cpf|CPF do Viajante|string|body|Obrigatório\n|dataNascimento|Data de nascimento do Viajante|string|body|Obrigatório\n### Parâmetros para Viajante Estrangeiro \n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|documento|Documento apresentado pelo viajante|documento|body|Obrigatório\n|codigoPaisOrigem|Código do pais de origem do Viajante|integer|body|Obrigatório. Ver tabela de países\n|codigoTipo|Código do tipo do documento do Viajante|integer|body|Obrigatório. Ver tabela de tipos de documentos\n|numero|Número do documento do Viajante|string|body|Obrigatório\n|dataNascimento|Data de nascimento do Viajante|stringr|body|Obrigatório\n|nomeNoDocumento|Nome do Viajante no documento apresentado|string|body|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes\n|----|---------|----|--------\n|nomeViajante|Nome do viajante cadastrado no Loja Franca|string|\n|dataUltimaVenda|Data da última venda|string|yyyy-MM-ddTHH:mm:ss\n|valorSaldoCota|Valor restante do saldo de cota|decimal|\n|saldoCotaProduto|Saldo de cota de cada produto|saldoCotaProduto|\n|codigoProduto|Código do produto|integer|Ver tabela de produtos\n|quantidade|Quantidade de produtos restantes na cota|integer|",
         "consumes": [
           "application/json"
@@ -128,7 +128,7 @@
         "tags": [
           "4 Métodos de Consultas"
         ],
-        "summary": "Consulta de viajante",
+        "summary": "Consulta de Viajante",
         "description": "Retorna o nome, a data de nascimento e a data da última venda de um determinado viajante.\n## Parâmetros de Entrada\n### Parâmetros para Viajante Brasileiro com CPF\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|cpf|CPF do Viajante|string|body|Obrigatório\n### Parâmetros para Viajante Estrangeiro \n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|documento|Documento apresentado pelo viajante|documento|body|Obrigatório\n|codigoPaisOrigem|Código do pais de origem do Viajante|integer|body|Obrigatório. Ver tabela de países \n|codigoTipo|Código do tipo do documento do Viajante|integer|body|Obrigatório. Ver tabela de tipos de documentos\n|numero|Número do documento do Viajante|string|body|Obrigatório\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes \n|----|---------|----|--------\n|nomeViajante|Nome do viajante cadastrado no Loja Franca|string|\n|dataNascimento|Data de nascimento do Viajante|string|yyyy-MM-dd\n|dataUltimaVenda|Data da última venda|string|yyyy-MM-ddTHH:mm:ss",
         "parameters": [
           {
@@ -157,7 +157,7 @@
         "tags": [
           "4 Métodos de Consultas"
         ],
-        "summary": "Consulta cotação do dólar",
+        "summary": "Consulta Cotação do Dólar",
         "description": "Retorna a cotação do dólar de uma determinada data.\n## Parâmetros de Entrada\n|Nome|Descrição|Tipo|Local|Detalhes\n|----|---------|----|-----|--------\n|dataCotacao|Data da cotação a pesquisar|string|query|Obrigatório yyyy-MM-dd\n## Atributos de Resposta\n|Nome|Descrição|Tipo|Detalhes \n|----|---------|----|--------\n|data|Data da cotação retornada|string|yyyy-MM-dd\n|valorOficial|Valor da cotação do dolar na data retornada|decimal|",
         "parameters": [
           {
@@ -183,7 +183,7 @@
     },
     "/venda": {
       "post": {
-        "summary": "Processa venda de viajante",
+        "summary": "Processa Venda de Viajante",
         "tags": [
           "5 Métodos de Venda"
         ],
@@ -218,7 +218,7 @@
     },
     "/venda/entrega": {
       "put": {
-        "summary": "Entrega venda para viajante",
+        "summary": "Entrega Venda para Viajante",
         "tags": [
           "5 Métodos de Venda"
         ],
@@ -254,7 +254,7 @@
     },
     "/venda/cancelamento": {
       "put": {
-        "summary": "Cancela venda de viajante",
+        "summary": "Cancela Venda de Viajante",
         "tags": [
           "5 Métodos de Venda"
         ],
@@ -290,7 +290,7 @@
     },
     "/venda/devolucaoParcial": {
       "post": {
-        "summary": "Devolução parcial de venda",
+        "summary": "Devolução Parcial de Venda",
         "tags": [
           "6 Métodos Devolucao e Troca"
         ],
@@ -325,7 +325,7 @@
     },
     "/venda/devolucaoTotal": {
       "put": {
-        "summary": "Devolução total de venda",
+        "summary": "Devolução Total de Venda",
         "tags": [
           "6 Métodos Devolucao e Troca"
         ],
