@@ -288,7 +288,7 @@
         }
       }
     },
-    "/venda/devolucaoParcial": {
+    "/vendas/devolucaoParcial": {
       "post": {
         "summary": "Devolução parcial de venda",
         "tags": [
@@ -323,7 +323,7 @@
         }
       }
     },
-    "/venda/devolucaoTotal": {
+    "/vendas/devolucaoTotal": {
       "put": {
         "summary": "Devolução total de venda",
         "tags": [
@@ -359,7 +359,7 @@
         }
       }
     },
-    "/venda/trocaItemIdentico": {
+    "/vendas/trocaItemIdentico": {
       "post": {
         "summary": "Troca Item Idêntico de Vendas",
         "tags": [
