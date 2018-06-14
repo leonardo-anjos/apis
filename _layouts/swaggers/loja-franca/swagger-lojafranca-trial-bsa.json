@@ -18,7 +18,7 @@
     "title": "Integra Loja Franca",
     "description": "\n## Endereço de Produção\n    https://apigateway.serpro.gov.br/lojafranca/api/\n    \n## Endereço de Degustação\n    https://apigateway.serpro.gov.br/lojafranca-trial/api/"
   },
-  "basePath": "/lojafranca-trial/api",
+  "basePath": "/api/lojafranca-trial",
   "paths": {
     "Descrição": {
       "head": {
@@ -413,7 +413,7 @@
         "dataNascimento": {
           "type": "string",
           "description": "Data de Nascimento do Viajante",
-          "example": "1981-12-15"
+          "example": "1980-01-01"
         }
       }
     },
